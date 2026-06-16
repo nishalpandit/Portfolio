@@ -499,13 +499,12 @@
         }
 
         .hero h1 .quote::before {
-            content: "“";
+            content: "";
             position: absolute;
-            left: -0.5em;
-            top: -0.1em;
-            font-size: 0.9em;
-            color: var(--red);
-            font-style: italic;
+            left: 0;
+            top: 0;
+            font-size: 0;
+            color: transparent;
         }
 
         .hero h1 .underscore {
@@ -1436,7 +1435,7 @@
         }
 
         .exp-block li::before {
-            content: "§";
+            content: "";
             position: absolute;
             left: 0;
             top: 6px;
@@ -1853,6 +1852,37 @@
             }
         }
     </style>
+    <style>
+    /* Developer-focused overrides: reduce editorial spacing, use sans headings */
+    .hero h1 {
+        font-family: var(--sans);
+        font-size: clamp(30px, 4vw, 44px);
+        line-height: 1.05;
+        letter-spacing: 0;
+        margin: 0 0 12px;
+        color: var(--ink);
+        font-weight: 600;
+    }
+    .hero-deck {
+        font-size: 15px;
+        color: var(--muted);
+        max-width: 46ch;
+        margin-top: 8px;
+    }
+    .hero {
+        padding-top: 36px;
+        padding-bottom: 18px;
+    }
+    .wrap { width: 90%; max-width: 1400px; margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+    .section { max-width: none; margin: 0 auto; padding-left: 0; padding-right: 0; }
+    .portrait-frame { box-shadow: none; border: 1px solid var(--rule-2); padding: 10px; }
+    .portrait-frame .svg-wrap { background: transparent; }
+    .services-grid .svc { background: transparent; border: 1px solid rgba(0,0,0,0.04); min-height: 160px; }
+    .section-head .title h2 { font-family: var(--sans); font-size: clamp(20px, 2.2vw, 28px); }
+    .num, .lbl, .muted { letter-spacing: 0; }
+    /* make metric bars denser and more technical */
+    .bar-chart .row { grid-template-columns: 110px 1fr auto; }
+    </style>
     <meta content="Nihal Kumar Pandit" name="author" />
     <meta
         content="Nihal Kumar Pandit, Django Developer, Python Developer, Backend Developer, REST API Developer, Ranchi"
@@ -1928,8 +1958,7 @@
                             <a class="btn" href="#work">View projects <span aria-hidden="true"
                                     class="arrow">↗</span></a>
                             <a class="btn btn-ghost" href="#contact">Hire / Contact</a>
-                            <a class="btn btn-ghost" download="" href="Nihal_Kumar_Pandit_Resume.pdf">Download
-                                résumé</a>
+                            <a class="btn btn-ghost" href="https://drive.google.com/file/d/1pAgVRmEUEej3IVFyKu73cXaT-wPV5qEC/view?usp=drive_link" target="_blank" rel="noopener">Download résumé</a>
                         </div>
                     </aside>
                 </div>
@@ -2001,7 +2030,7 @@
         <section class="section" id="about">
             <div class="wrap">
                 <header class="section-head reveal">
-                    <div class="num">§ I.<br />About</div>
+                    <div class="num">I.<br />About</div>
                     <div class="title">
                         <h2>A focused <span class="it">Django developer</span> —<br />building systems that teams can
                             actually use.</h2>
@@ -2054,7 +2083,7 @@
         <section class="section" id="stack" style="padding-top: 0;">
             <div class="wrap">
                 <header class="section-head reveal">
-                    <div class="num">§ II.<br />Stack</div>
+                    <div class="num">II.<br />Stack</div>
                     <div class="title">
                         <h2>The stack I use —<br />for <span class="it">real Django builds</span>.</h2>
                         <p class="deck">Practical tools for backend systems, dashboards, APIs, automation and
@@ -2196,7 +2225,7 @@
         <section class="section" id="work" style="padding-top: 0;">
             <div class="wrap">
                 <header class="section-head reveal">
-                    <div class="num">§ III.<br />Work</div>
+                    <div class="num">III.<br />Work</div>
                     <div class="title">
                         <h2>Selected <span class="it">project work</span> —<br />dashboards, automation and backend
                             systems.</h2>
@@ -2295,7 +2324,7 @@
         <section class="section" id="experience" style="padding-top: 0;">
             <div class="wrap">
                 <header class="section-head reveal">
-                    <div class="num">§ IV.<br />Experience</div>
+                    <div class="num">IV.<br />Experience</div>
                     <div class="title">
                         <h2>Experience &amp; <span class="it">education</span> —<br />practical backend work.</h2>
                         <p class="deck">Hands-on development experience in Django apps, APIs, dashboards, automation and
@@ -2406,7 +2435,7 @@
         <section class="section" id="services" style="padding-top: 0;">
             <div class="wrap">
                 <header class="section-head reveal">
-                    <div class="num">§ V.<br />Services</div>
+                    <div class="num">V.<br />Services</div>
                     <div class="title">
                         <h2>Services I can <span class="it">deliver</span> —<br />from idea to deployment.</h2>
                         <p class="deck">Useful for freelance clients who need dashboards, backend systems, APIs,
@@ -2482,7 +2511,7 @@
         <section class="section contact" id="contact" style="padding-top: 0;">
             <div class="wrap">
                 <header class="section-head reveal">
-                    <div class="num">§ VI.<br />Contact</div>
+                    <div class="num">VI.<br />Contact</div>
                     <div class="title">
                         <h2>Have a <span class="it">project</span> —<br />or a role in mind?</h2>
                         <p class="deck">Email or call directly for freelance projects, Django dashboard work, backend
