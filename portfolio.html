@@ -1,0 +1,2655 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="#f4efe6" name="theme-color" />
+    <title>Nihal Kumar Pandit — Django backend, Tool Devloper &amp; Automation Devloper</title>
+    <meta
+        content="Nihal Kumar Pandit is a Python Django Developer from Ranchi building scalable admin dashboards, REST APIs, automation tools, CMS systems, and business web applications using Django, DRF and PostgreSQL."
+        name="description" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&amp;family=Inter+Tight:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+
+        :root {
+            --paper: #f4efe6;
+            --paper-2: #ebe5d9;
+            --card: #fbf8f1;
+            --ink: #14130f;
+            --ink-2: #2f2c25;
+            --muted: #6b6757;
+            --muted-2: #97917e;
+            --rule: #1a1814;
+            --rule-2: #cfc8b8;
+            --red: #c4351d;
+            --red-soft: #efd6cd;
+            --olive: #5a5a2b;
+            --gold: #b88a1a;
+
+            --serif: "Newsreader", "Source Serif Pro", "Iowan Old Style", Georgia, serif;
+            --sans: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+            --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+            --container: 1280px;
+            --gutter: clamp(20px, 4vw, 56px);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+            color: inherit;
+            background: none;
+            border: 0;
+            cursor: pointer;
+        }
+
+        ::selection {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        /* faint paper grain */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+            opacity: 0.7;
+            mix-blend-mode: multiply;
+        }
+
+        .wrap {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding-left: var(--gutter);
+            padding-right: var(--gutter);
+            position: relative;
+            z-index: 2;
+        }
+
+        .grid-12 {
+            display: grid;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            gap: clamp(16px, 2vw, 32px);
+        }
+
+        .rule {
+            border: 0;
+            height: 0;
+            border-top: 1px solid var(--rule);
+            margin: 0;
+        }
+
+        .rule-thin {
+            border-top-color: var(--rule-2);
+        }
+
+        .rule-thick {
+            border-top-width: 2px;
+        }
+
+        .label {
+            font-family: var(--mono);
+            font-size: 10.5px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ink-2);
+            font-weight: 500;
+        }
+
+        .label-muted {
+            color: var(--muted);
+        }
+
+        .tnum,
+        .tnum * {
+            font-variant-numeric: tabular-nums;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--serif);
+            font-weight: 400;
+            letter-spacing: -0.012em;
+            color: var(--ink);
+            margin: 0;
+        }
+
+        h1 {
+            font-size: clamp(56px, 9vw, 148px);
+            line-height: 0.92;
+            letter-spacing: -0.035em;
+        }
+
+        h2 {
+            font-size: clamp(40px, 5.2vw, 76px);
+            line-height: 0.98;
+            letter-spacing: -0.022em;
+        }
+
+        h3 {
+            font-size: clamp(22px, 2.2vw, 28px);
+            line-height: 1.15;
+        }
+
+        .it {
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        /* ===========================================================
+   Masthead
+   =========================================================== */
+        .mast {
+            border-bottom: 1px solid var(--rule);
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-2);
+        }
+
+        .mast-row {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 24px;
+            padding: 10px 0;
+        }
+
+        .mast-row .left,
+        .mast-row .right {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .mast-row .right {
+            justify-content: flex-end;
+        }
+
+        .mast-row .mid {
+            text-align: center;
+            font-family: var(--serif);
+            font-size: 13px;
+            letter-spacing: 0.06em;
+            text-transform: none;
+            font-style: italic;
+            color: var(--muted);
+        }
+
+        .mast .pip {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--olive);
+            vertical-align: 1px;
+            margin-right: 8px;
+            box-shadow: 0 0 0 3px rgba(90, 90, 43, 0.18);
+        }
+
+        @media (max-width: 720px) {
+            .mast-row {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .mast-row .mid {
+                display: none;
+            }
+
+            .mast .hide-sm {
+                display: none;
+            }
+        }
+
+        /* ===========================================================
+   Sub-nav
+   =========================================================== */
+        .subnav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: var(--paper);
+            border-bottom: 1px solid var(--rule);
+            transition: box-shadow .3s ease;
+        }
+
+        .subnav.is-scrolled {
+            box-shadow: 0 1px 0 var(--rule-2), 0 6px 16px -10px rgba(0, 0, 0, 0.12);
+        }
+
+        .subnav-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 56px;
+            gap: 16px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 10px;
+            font-family: var(--serif);
+            font-size: 22px;
+            letter-spacing: -0.02em;
+        }
+
+        .brand .amp {
+            color: var(--red);
+            font-style: italic;
+        }
+
+        .brand small {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .subnav-links {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .subnav-links a {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 6px;
+            padding: 8px 12px;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-2);
+            position: relative;
+            transition: color .2s ease;
+        }
+
+        .subnav-links a .n {
+            color: var(--muted-2);
+        }
+
+        .subnav-links a::after {
+            content: "";
+            position: absolute;
+            left: 12px;
+            right: 12px;
+            bottom: 4px;
+            height: 1px;
+            background: var(--ink);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .3s cubic-bezier(.4, .2, .2, 1);
+        }
+
+        .subnav-links a:hover,
+        .subnav-links a.active {
+            color: var(--ink);
+        }
+
+        .subnav-links a:hover::after,
+        .subnav-links a.active::after {
+            transform: scaleX(1);
+        }
+
+        .subnav-links a.active .n {
+            color: var(--red);
+        }
+
+        .cta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 14px 9px 12px;
+            border: 1px solid var(--ink);
+            background: var(--ink);
+            color: var(--paper);
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            border-radius: 999px;
+            transition: background .2s ease, border-color .2s ease;
+        }
+
+        .cta-pill:hover {
+            background: var(--red);
+            border-color: var(--red);
+        }
+
+        .cta-pill .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #7adf9b;
+            box-shadow: 0 0 0 3px rgba(122, 223, 155, 0.25);
+        }
+
+        .nav-toggle {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--rule);
+            border-radius: 999px;
+            position: relative;
+        }
+
+        .nav-toggle span {
+            position: absolute;
+            left: 10px;
+            right: 10px;
+            height: 1.4px;
+            background: var(--ink);
+            transition: transform .25s ease, top .25s ease;
+        }
+
+        .nav-toggle span:nth-child(1) {
+            top: 15px;
+        }
+
+        .nav-toggle span:nth-child(2) {
+            top: 23px;
+        }
+
+        .nav-toggle.is-open span:nth-child(1) {
+            top: 19px;
+            transform: rotate(45deg);
+        }
+
+        .nav-toggle.is-open span:nth-child(2) {
+            top: 19px;
+            transform: rotate(-45deg);
+        }
+
+        @media (max-width: 920px) {
+
+            .subnav-links,
+            .cta-pill {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: inline-block;
+            }
+        }
+
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            z-index: 49;
+            background: var(--paper);
+            padding: 90px var(--gutter) 32px;
+            display: none;
+            flex-direction: column;
+        }
+
+        .mobile-menu.is-open {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            font-family: var(--serif);
+            font-size: clamp(34px, 8.5vw, 56px);
+            padding: 16px 0;
+            border-bottom: 1px solid var(--rule-2);
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+        }
+
+        .mobile-menu a .n {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--red);
+            letter-spacing: 0.16em;
+        }
+
+        .mobile-meta {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        /* ===========================================================
+   Hero
+   =========================================================== */
+        .hero {
+            padding: clamp(48px, 7vw, 90px) 0 clamp(36px, 5vw, 60px);
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+            gap: clamp(28px, 4vw, 56px);
+            align-items: end;
+        }
+
+        .hero h1 {
+            font-weight: 400;
+            font-feature-settings: "ss01" on, "liga" on;
+            font-size: clamp(42px, 7vw, 96px);
+            line-height: 1.02;
+        }
+
+        .hero h1 .red {
+            color: var(--red);
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .hero h1 .quote {
+            position: relative;
+            padding-left: 0.18em;
+        }
+
+        .hero h1 .quote::before {
+            content: "“";
+            position: absolute;
+            left: -0.5em;
+            top: -0.1em;
+            font-size: 0.9em;
+            color: var(--red);
+            font-style: italic;
+        }
+
+        .hero h1 .underscore {
+            display: inline-block;
+            position: relative;
+        }
+
+        .hero h1 .underscore::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0.04em;
+            height: 0.06em;
+            background: var(--ink);
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: rule-in 1.1s 0.4s cubic-bezier(.4, .2, .2, 1) forwards;
+        }
+
+        @keyframes rule-in {
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: clamp(28px, 4vw, 40px);
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .hero-meta .label {
+            padding-right: 16px;
+            border-right: 1px solid var(--rule-2);
+        }
+
+        .hero-meta .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--ink-2);
+        }
+
+        .hero-meta .pill .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #2f8f3a;
+            box-shadow: 0 0 0 3px rgba(47, 143, 58, 0.2);
+        }
+
+        .hero-deck {
+            font-family: var(--serif);
+            font-size: clamp(18px, 1.6vw, 22px);
+            line-height: 1.45;
+            color: var(--ink-2);
+            font-weight: 300;
+            margin: 0 0 28px;
+        }
+
+        .hero-deck em {
+            color: var(--red);
+            font-style: italic;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 22px;
+            border-radius: 0;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            border: 1px solid var(--ink);
+            background: var(--ink);
+            color: var(--paper);
+            transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+        }
+
+        .btn .arrow {
+            transition: transform .3s cubic-bezier(.4, .2, .2, 1);
+        }
+
+        .btn:hover {
+            background: var(--red);
+            border-color: var(--red);
+        }
+
+        .btn:hover .arrow {
+            transform: translate(3px, -3px);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--ink);
+        }
+
+        .btn-ghost:hover {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        @media (max-width: 920px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===========================================================
+   Stats ticker (with sparklines)
+   =========================================================== */
+        .ticker {
+            border-top: 2px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            background: var(--paper);
+        }
+
+        .ticker-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+
+        .ticker-cell {
+            padding: 22px 22px 24px;
+            border-right: 1px solid var(--rule-2);
+            position: relative;
+        }
+
+        .ticker-cell:last-child {
+            border-right: 0;
+        }
+
+        .ticker-cell .lbl {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .ticker-cell .num {
+            font-family: var(--serif);
+            font-size: clamp(40px, 4.2vw, 56px);
+            line-height: 1;
+            margin: 8px 0 6px;
+            letter-spacing: -0.03em;
+            font-feature-settings: "lnum" on, "tnum" on;
+        }
+
+        .ticker-cell .num sup {
+            font-family: var(--mono);
+            font-size: 0.32em;
+            letter-spacing: 0.18em;
+            color: var(--red);
+            vertical-align: 0.9em;
+            margin-left: 4px;
+        }
+
+        .ticker-cell .spark {
+            width: 100%;
+            height: 28px;
+            display: block;
+            color: var(--ink-2);
+        }
+
+        .ticker-cell .spark-meta {
+            position: absolute;
+            top: 22px;
+            right: 22px;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--olive);
+        }
+
+        .ticker-cell .spark-meta::before {
+            content: "▲ ";
+            color: var(--olive);
+        }
+
+        @media (max-width: 720px) {
+            .ticker-row {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .ticker-cell:nth-child(2) {
+                border-right: 0;
+            }
+
+            .ticker-cell:nth-child(1),
+            .ticker-cell:nth-child(2) {
+                border-bottom: 1px solid var(--rule-2);
+            }
+        }
+
+        /* ===========================================================
+   Section scaffolding
+   =========================================================== */
+        .section {
+            padding: clamp(64px, 9vw, 120px) 0;
+            position: relative;
+        }
+
+        .section-head {
+            display: grid;
+            grid-template-columns: minmax(0, auto) 1fr;
+            gap: clamp(20px, 3vw, 40px);
+            align-items: end;
+            padding-top: 24px;
+            padding-bottom: 28px;
+            border-top: 2px solid var(--rule);
+            margin-bottom: clamp(36px, 5vw, 60px);
+        }
+
+        .section-head .num {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--red);
+            padding-right: 24px;
+            border-right: 1px solid var(--rule-2);
+            align-self: start;
+            padding-top: 4px;
+        }
+
+        .section-head .title h2 .it {
+            color: var(--red);
+        }
+
+        .section-head .title h2 {
+            max-width: 22ch;
+        }
+
+        .section-head .deck {
+            font-family: var(--serif);
+            font-size: clamp(16px, 1.3vw, 18px);
+            color: var(--muted);
+            font-style: italic;
+            max-width: 60ch;
+            margin-top: 12px;
+        }
+
+        /* ===========================================================
+   About
+   =========================================================== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+            gap: clamp(32px, 4vw, 80px);
+            align-items: start;
+        }
+
+        .portrait-frame {
+            position: sticky;
+            top: 90px;
+            border: 1px solid var(--rule);
+            background: var(--card);
+            padding: 14px 14px 18px;
+            box-shadow: 6px 6px 0 var(--rule);
+        }
+
+        .portrait-frame .svg-wrap {
+            aspect-ratio: 4 / 5;
+            background: var(--paper-2);
+            border: 1px solid var(--rule-2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .portrait-frame .svg-wrap svg,
+        .portrait-frame .svg-wrap img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .portrait-frame .cap {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .portrait-frame .cap b {
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        .about-prose .lede {
+            font-family: var(--serif);
+            font-size: clamp(22px, 2.2vw, 30px);
+            line-height: 1.4;
+            font-weight: 300;
+            color: var(--ink);
+            margin: 0 0 28px;
+        }
+
+        .about-prose .lede em {
+            color: var(--red);
+            font-style: italic;
+        }
+
+        .about-prose .cols {
+            column-count: 2;
+            column-gap: 32px;
+            font-size: 15.5px;
+            color: var(--ink-2);
+            line-height: 1.7;
+        }
+
+        .about-prose .cols p {
+            margin: 0 0 14px;
+            break-inside: avoid;
+        }
+
+        .about-prose .cols p:first-child {
+            text-indent: 0;
+        }
+
+        .about-facts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 32px;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--rule);
+        }
+
+        .about-facts dt {
+            font-family: var(--mono);
+            font-size: 10.5px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted);
+            padding: 14px 0 4px;
+            border-bottom: 1px solid var(--rule-2);
+        }
+
+        .about-facts dd {
+            margin: 0;
+            padding: 0 0 14px;
+            font-size: 15px;
+            color: var(--ink);
+            border-bottom: 1px solid var(--rule-2);
+        }
+
+        @media (max-width: 900px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portrait-frame {
+                position: static;
+                max-width: 360px;
+            }
+
+            .about-prose .cols {
+                column-count: 1;
+            }
+        }
+
+        /* ===========================================================
+   Stack (radar + categorised list)
+   =========================================================== */
+        .stack-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+            gap: clamp(28px, 4vw, 64px);
+            align-items: start;
+        }
+
+        .radar-card {
+            position: relative;
+            padding: 28px 28px 24px;
+            border: 1px solid var(--rule);
+            background: var(--card);
+            box-shadow: 6px 6px 0 var(--rule);
+        }
+
+        .radar-card .head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px solid var(--rule);
+            padding-bottom: 12px;
+            margin-bottom: 8px;
+        }
+
+        .radar-card .head .ttl {
+            font-family: var(--serif);
+            font-size: 18px;
+        }
+
+        .radar-card .head .lbl {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .radar-card svg.radar {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .radar-card .legend {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            padding-top: 12px;
+            border-top: 1px solid var(--rule-2);
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .radar-card .legend .swatch {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: var(--red);
+            margin-right: 6px;
+            vertical-align: -1px;
+            border: 1px solid color-mix(in oklab, var(--red), #000 20%);
+        }
+
+        .stack-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border-top: 1px solid var(--rule);
+        }
+
+        .stack-list .group {
+            padding: 16px 24px 18px 0;
+            border-bottom: 1px solid var(--rule-2);
+            border-right: 1px solid var(--rule-2);
+        }
+
+        .stack-list .group:nth-child(2n) {
+            border-right: 0;
+            padding-left: 24px;
+            padding-right: 0;
+        }
+
+        .stack-list .group .gh {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .stack-list .group .gh .name {
+            font-family: var(--serif);
+            font-size: 18px;
+        }
+
+        .stack-list .group .gh .num {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 0.14em;
+        }
+
+        .stack-list .group ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .stack-list .group li {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 14.5px;
+            color: var(--ink-2);
+            border-bottom: 1px dotted var(--rule-2);
+        }
+
+        .stack-list .group li:last-child {
+            border-bottom: 0;
+        }
+
+        .stack-list .group li .meta {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .stack-list .group li .meta.hi {
+            color: var(--red);
+        }
+
+        @media (max-width: 900px) {
+            .stack-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stack-list {
+                grid-template-columns: 1fr;
+            }
+
+            .stack-list .group:nth-child(2n) {
+                padding-left: 0;
+                border-right: 0;
+            }
+
+            .stack-list .group {
+                border-right: 0;
+                padding-right: 0;
+            }
+        }
+
+        /* ===========================================================
+   Selected work (case-study cards w/ bar charts)
+   =========================================================== */
+        .case {
+            display: grid;
+            grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+            gap: clamp(28px, 4vw, 56px);
+            padding: clamp(28px, 4vw, 48px) 0;
+            border-top: 1px solid var(--rule);
+            align-items: start;
+        }
+
+        .case:last-of-type {
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .case-meta {
+            position: sticky;
+            top: 90px;
+        }
+
+        .case-meta .num {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 6px;
+        }
+
+        .case-meta .year {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .case-meta .role {
+            display: inline-block;
+            padding: 3px 8px;
+            margin-bottom: 14px;
+            border: 1px solid var(--rule);
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ink-2);
+        }
+
+        .case-meta h3 {
+            font-family: var(--serif);
+            font-size: clamp(28px, 3.4vw, 44px);
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            margin-bottom: 14px;
+        }
+
+        .case-meta .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 14px;
+        }
+
+        .case-meta .tags span {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ink-2);
+            padding: 3px 8px;
+            border: 1px solid var(--rule-2);
+        }
+
+        .case-body p {
+            font-family: var(--serif);
+            font-size: 17px;
+            line-height: 1.65;
+            color: var(--ink-2);
+            margin: 0 0 16px;
+        }
+
+        .case-body .pull {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 20px;
+            color: var(--ink);
+            padding: 14px 0 14px 18px;
+            border-left: 2px solid var(--red);
+            margin: 22px 0;
+        }
+
+        .metric-card {
+            margin-top: 20px;
+            padding: 20px;
+            background: var(--card);
+            border: 1px solid var(--rule);
+            position: relative;
+        }
+
+        .metric-card .h {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 12px;
+        }
+
+        .metric-card .h .t {
+            font-family: var(--serif);
+            font-size: 16px;
+        }
+
+        .metric-card .h .l {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .bar-chart {
+            display: grid;
+            gap: 10px;
+        }
+
+        .bar-chart .row {
+            display: grid;
+            grid-template-columns: 90px 1fr auto;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--ink-2);
+        }
+
+        .bar-chart .row .bar {
+            height: 14px;
+            background: var(--paper-2);
+            border: 1px solid var(--rule-2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bar-chart .row .bar .fill {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            background: repeating-linear-gradient(45deg, var(--ink) 0, var(--ink) 6px, transparent 6px, transparent 11px),
+                var(--red);
+            width: 0;
+            transition: width 1.1s cubic-bezier(.2, .6, .2, 1);
+        }
+
+        .bar-chart .row.before .bar .fill {
+            background: var(--paper-2);
+            border-right: 1px solid var(--rule);
+        }
+
+        .bar-chart .row.before .bar {
+            background: repeating-linear-gradient(45deg, var(--rule-2) 0, var(--rule-2) 4px, transparent 4px, transparent 8px);
+        }
+
+        .bar-chart .row .v {
+            font-family: var(--serif);
+            font-size: 16px;
+            letter-spacing: 0;
+            text-transform: none;
+            color: var(--ink);
+        }
+
+        .case-thumb {
+            margin-top: 22px;
+            border: 1px solid var(--rule);
+            background: var(--card);
+        }
+
+        .case-thumb svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @media (max-width: 900px) {
+            .case {
+                grid-template-columns: 1fr;
+            }
+
+            .case-meta {
+                position: static;
+            }
+        }
+
+        /* ===========================================================
+   Experience (gantt-style horizontal)
+   =========================================================== */
+        .gantt {
+            border: 1px solid var(--rule);
+            background: var(--card);
+            padding: 28px;
+            margin-bottom: 36px;
+        }
+
+        .gantt .head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px solid var(--rule);
+            padding-bottom: 10px;
+            margin-bottom: 18px;
+        }
+
+        .gantt .head .ttl {
+            font-family: var(--serif);
+            font-size: 18px;
+        }
+
+        .gantt .head .lbl {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .gantt .scale {
+            display: grid;
+            grid-template-columns: 160px repeat(8, 1fr);
+            gap: 0;
+            border-top: 1px solid var(--rule-2);
+            border-bottom: 1px solid var(--rule-2);
+            padding: 6px 0;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .gantt .scale span {
+            padding: 0 6px;
+            border-right: 1px dotted var(--rule-2);
+        }
+
+        .gantt .scale span:first-child {
+            border-right: 1px solid var(--rule-2);
+        }
+
+        .gantt .scale span:last-child {
+            border-right: 0;
+        }
+
+        .gantt .row {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            align-items: center;
+            gap: 0;
+            border-bottom: 1px dotted var(--rule-2);
+            padding: 14px 0;
+        }
+
+        .gantt .row:last-child {
+            border-bottom: 0;
+        }
+
+        .gantt .row .who {
+            padding-right: 12px;
+            border-right: 1px solid var(--rule-2);
+        }
+
+        .gantt .row .who .r {
+            font-family: var(--serif);
+            font-size: 16px;
+        }
+
+        .gantt .row .who .o {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 3px;
+        }
+
+        .gantt .row .track {
+            position: relative;
+            height: 22px;
+            margin-left: 8px;
+            background:
+                repeating-linear-gradient(to right, transparent 0, transparent calc(12.5% - 1px), var(--rule-2) calc(12.5% - 1px), var(--rule-2) 12.5%);
+        }
+
+        .gantt .row .bar {
+            position: absolute;
+            top: 3px;
+            bottom: 3px;
+            background: var(--red);
+            border: 1px solid color-mix(in oklab, var(--red), #000 20%);
+        }
+
+        .gantt .row .bar.current::after {
+            content: "";
+            position: absolute;
+            right: -1px;
+            top: -3px;
+            bottom: -3px;
+            width: 6px;
+            background: var(--red);
+            animation: pulse-bar 1.6s ease-in-out infinite;
+        }
+
+        @keyframes pulse-bar {
+
+            0%,
+            100% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .gantt .row .bar .lbl {
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: var(--mono);
+            font-size: 9.5px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--paper);
+            white-space: nowrap;
+        }
+
+        .exp-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .exp-block {
+            border: 1px solid var(--rule);
+            padding: 22px;
+            background: var(--paper);
+        }
+
+        .exp-block .role {
+            font-family: var(--serif);
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+
+        .exp-block .when {
+            font-family: var(--mono);
+            font-size: 10.5px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 14px;
+        }
+
+        .exp-block ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .exp-block li {
+            position: relative;
+            padding: 6px 0 6px 18px;
+            font-size: 14.5px;
+            color: var(--ink-2);
+            border-top: 1px dotted var(--rule-2);
+        }
+
+        .exp-block li:first-child {
+            border-top: 0;
+        }
+
+        .exp-block li::before {
+            content: "§";
+            position: absolute;
+            left: 0;
+            top: 6px;
+            font-family: var(--serif);
+            color: var(--red);
+            font-style: italic;
+        }
+
+        .edu-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 36px;
+            padding-top: 28px;
+            border-top: 1px dashed var(--rule-2);
+        }
+
+        .edu {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 18px;
+            align-items: center;
+            padding: 16px 18px;
+            background: var(--card);
+            border: 1px solid var(--rule);
+        }
+
+        .edu .yr {
+            font-family: var(--serif);
+            font-size: 22px;
+            color: var(--red);
+            letter-spacing: -0.02em;
+        }
+
+        .edu .body .deg {
+            font-family: var(--serif);
+            font-size: 17px;
+        }
+
+        .edu .body .sch {
+            font-family: var(--mono);
+            font-size: 10.5px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .edu .badge {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border: 1px solid var(--rule);
+            color: var(--ink);
+        }
+
+        @media (max-width: 760px) {
+            .gantt {
+                overflow-x: auto;
+            }
+
+            .gantt .scale,
+            .gantt .row {
+                grid-template-columns: 130px 1fr;
+            }
+
+            .exp-detail-grid,
+            .edu-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===========================================================
+   Services (newspaper grid)
+   =========================================================== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-top: 1px solid var(--rule);
+            border-left: 1px solid var(--rule);
+        }
+
+        .svc {
+            padding: 26px 26px 28px;
+            border-right: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            min-height: 220px;
+            background: var(--paper);
+            position: relative;
+            transition: background .2s ease;
+        }
+
+        .svc:hover {
+            background: var(--card);
+        }
+
+        .svc .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .svc .top .n {
+            color: var(--red);
+        }
+
+        .svc h3 {
+            font-family: var(--serif);
+            font-size: 22px;
+            line-height: 1.2;
+            margin: 4px 0 0;
+        }
+
+        .svc p {
+            margin: 0;
+            font-size: 14.5px;
+            color: var(--ink-2);
+            line-height: 1.6;
+        }
+
+        .svc .arrow {
+            margin-top: auto;
+            align-self: flex-end;
+            font-family: var(--mono);
+            font-size: 18px;
+            color: var(--red);
+        }
+
+        @media (max-width: 900px) {
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===========================================================
+   Contact
+   =========================================================== */
+        .contact {
+            padding-bottom: clamp(60px, 8vw, 100px);
+        }
+
+        .contact-card {
+            border: 1px solid var(--rule);
+            background: var(--card);
+            padding: clamp(32px, 4vw, 56px);
+            position: relative;
+        }
+
+        .contact-card::before {
+            content: "RE: NEW PROJECT";
+            position: absolute;
+            top: -10px;
+            left: 24px;
+            background: var(--paper);
+            padding: 0 10px;
+            font-family: var(--mono);
+            font-size: 10.5px;
+            letter-spacing: 0.16em;
+            color: var(--red);
+        }
+
+        .contact-h {
+            font-family: var(--serif);
+            font-size: clamp(40px, 6.4vw, 88px);
+            line-height: 0.98;
+            letter-spacing: -0.03em;
+            margin: 16px 0 36px;
+            max-width: 14ch;
+        }
+
+        .contact-h em {
+            color: var(--red);
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .contact-h a {
+            position: relative;
+            display: inline;
+            background-image: linear-gradient(currentColor, currentColor);
+            background-size: 100% 2px;
+            background-position: 0 92%;
+            background-repeat: no-repeat;
+            transition: background-size .35s ease;
+        }
+
+        .contact-h a:hover {
+            background-size: 100% 6px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 2px solid var(--rule);
+        }
+
+        .contact-cell {
+            padding: 22px 18px 0 0;
+            border-right: 1px solid var(--rule-2);
+        }
+
+        .contact-cell:last-child {
+            border-right: 0;
+            padding-right: 0;
+        }
+
+        .contact-cell:not(:first-child) {
+            padding-left: 18px;
+        }
+
+        .contact-cell .l {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        .contact-cell .v {
+            font-size: 15.5px;
+            color: var(--ink);
+        }
+
+        .contact-cell .v a {
+            transition: color .2s ease;
+        }
+
+        .contact-cell .v a:hover {
+            color: var(--red);
+        }
+
+        .contact-cell .ok {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-cell .ok::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #2f8f3a;
+            box-shadow: 0 0 0 3px rgba(47, 143, 58, 0.18);
+        }
+
+        @media (max-width: 880px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-cell {
+                padding: 18px 14px 0 0;
+            }
+
+            .contact-cell:nth-child(2) {
+                border-right: 0;
+                padding-right: 0;
+            }
+
+            .contact-cell:nth-child(3) {
+                padding-left: 0;
+                border-right: 1px solid var(--rule-2);
+                padding-right: 14px;
+                padding-top: 18px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-cell {
+                padding: 18px 0 !important;
+                border-right: 0 !important;
+                border-bottom: 1px solid var(--rule-2);
+            }
+
+            .contact-cell:last-child {
+                border-bottom: 0;
+            }
+        }
+
+        /* ===========================================================
+   Colophon (footer)
+   =========================================================== */
+        .colophon {
+            padding: 36px 0 60px;
+            border-top: 2px solid var(--rule);
+            position: relative;
+            z-index: 2;
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .colophon .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+        }
+
+        .colophon .row>div:nth-child(2) {
+            text-align: center;
+        }
+
+        .colophon .row>div:last-child {
+            text-align: right;
+        }
+
+        .colophon a {
+            transition: color .2s ease;
+        }
+
+        .colophon a:hover {
+            color: var(--ink);
+        }
+
+        @media (max-width: 720px) {
+            .colophon .row {
+                grid-template-columns: 1fr;
+            }
+
+            .colophon .row>div {
+                text-align: left !important;
+            }
+        }
+
+        /* ===========================================================
+   Reveal
+   =========================================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity .8s cubic-bezier(.2, .6, .2, 1), transform .8s cubic-bezier(.2, .6, .2, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal.is-in {
+            opacity: 1;
+            transform: none;
+        }
+
+        .reveal[data-d="1"] {
+            transition-delay: .08s;
+        }
+
+        .reveal[data-d="2"] {
+            transition-delay: .16s;
+        }
+
+        .reveal[data-d="3"] {
+            transition-delay: .24s;
+        }
+
+        .reveal[data-d="4"] {
+            transition-delay: .32s;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.001ms !important;
+                transition-duration: 0.001ms !important;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+
+        /* Cleaned portfolio additions */
+        .contact-grid .contact-cell:nth-child(4n) {
+            border-right: 0;
+            padding-right: 0;
+        }
+
+        .contact-grid .contact-cell:nth-child(n+5) {
+            padding-top: 22px;
+        }
+
+        @media (max-width: 880px) {
+            .contact-grid .contact-cell:nth-child(4n) {
+                border-right: 1px solid var(--rule-2);
+                padding-right: 14px;
+            }
+
+            .contact-grid .contact-cell:nth-child(2n) {
+                border-right: 0 !important;
+                padding-right: 0 !important;
+            }
+        }
+    </style>
+    <meta content="Nihal Kumar Pandit" name="author" />
+    <meta
+        content="Nihal Kumar Pandit, Django Developer, Python Developer, Backend Developer, REST API Developer, Ranchi"
+        name="keywords" />
+    <meta content="Nihal Kumar Pandit — Python Django Developer" property="og:title" />
+    <meta
+        content="Nihal Kumar Pandit is a Python Django Developer from Ranchi building scalable admin dashboards, REST APIs, automation tools, CMS systems, and business web applications using Django, DRF and PostgreSQL."
+        property="og:description" />
+    <meta content="website" property="og:type" />
+    <meta content="https://nihalpandit000.github.io/" property="og:url" />
+    <meta content="summary_large_image" property="twitter:card" />
+</head>
+
+<body>
+    <!-- ========== MASTHEAD ========== -->
+    <header class="mast">
+        <div class="wrap mast-row">
+            <div class="left">
+                <span><span class="pip"></span>Open to freelance &amp; full-time</span>
+                <span class="hide-sm">Portfolio · 2026</span>
+            </div>
+            <div class="mid">The Nihal Kumar Pandit Portfolio</div>
+            <div class="right">
+                <span class="hide-sm" id="today">Tue, 16 Jun 2026</span>
+                <span>Ranchi · Jharkhand · India</span>
+            </div>
+        </div>
+    </header>
+    <!-- ========== SUB NAV ========== -->
+    <nav aria-label="Primary" class="subnav" id="subnav">
+        <div class="wrap subnav-row">
+            <a class="brand" href="#top">Nihal <span class="amp">K.</span> Pandit <small>Django Developer</small></a>
+            <ul class="subnav-links">
+                <li><a href="#about"><span class="n">I.</span> About</a></li>
+                <li><a href="#stack"><span class="n">II.</span> Stack</a></li>
+                <li><a href="#work"><span class="n">III.</span> Work</a></li>
+                <li><a href="#experience"><span class="n">IV.</span> Experience</a></li>
+                <li><a href="#services"><span class="n">V.</span> Services</a></li>
+            </ul>
+            <a class="cta-pill" href="#contact"><span class="dot"></span>Contact</a>
+            <button aria-expanded="false" aria-label="Menu" class="nav-toggle" id="navToggle">
+                <span></span><span></span>
+            </button>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about"><span class="n">I.</span>About</a>
+        <a href="#stack"><span class="n">II.</span>Stack</a>
+        <a href="#work"><span class="n">III.</span>Work</a>
+        <a href="#experience"><span class="n">IV.</span>Experience</a>
+        <a href="#services"><span class="n">V.</span>Services</a>
+        <a href="#contact"><span class="n">VI.</span>Contact</a>
+        <div class="mobile-meta">
+            <span>Ranchi · India</span>
+            <span>Open now</span>
+        </div>
+    </div>
+    <main id="top">
+        <!-- ========== HERO ========== -->
+        <section class="hero">
+            <div class="wrap">
+                <div class="hero-meta reveal">
+                    <span class="label">№ 001 — Front page</span>
+                    <span class="pill"><span class="dot"></span>Available · Freelance &amp; Full-time</span>
+                    <span class="pill" style="color:var(--muted)">est. 2025</span>
+                </div>
+                <div class="hero-grid">
+                    <h1 class="reveal" data-d="1"><span class="quote">Django</span><br /><span
+                            class="it red">backend</span>, Tool Devloper<br /><span
+                            class="underscore">&amp; Automation Devloper</span>.</h1>
+                    <aside class="reveal" data-d="2">
+                        <p class="hero-deck"><em>Nihal Kumar Pandit</em> — Python Django Developer building scalable
+                            admin dashboards, REST APIs, automation tools, CMS systems and business web applications for
+                            production teams.</p>
+                        <div class="hero-buttons">
+                            <a class="btn" href="#work">View projects <span aria-hidden="true"
+                                    class="arrow">↗</span></a>
+                            <a class="btn btn-ghost" href="#contact">Hire / Contact</a>
+                            <a class="btn btn-ghost" download="" href="Nihal_Kumar_Pandit_Resume.pdf">Download
+                                résumé</a>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+        <!-- ========== TICKER / STATS WITH SPARKLINES ========== -->
+        <section aria-label="Practice metrics" class="ticker">
+            <div class="wrap ticker-row">
+                <div class="ticker-cell reveal tnum">
+                    <div class="lbl">Django projects</div>
+                    <div class="num">06<sup>+</sup></div>
+                    <svg aria-hidden="true" class="spark" preserveaspectratio="none" viewbox="0 0 120 28">
+                        <polyline fill="none" points="0,22 15,20 30,21 45,15 60,16 75,10 90,12 105,6 120,4"
+                            stroke="currentColor" stroke-width="1.4"></polyline>
+                        <polyline fill="rgba(20,19,15,0.06)"
+                            points="0,22 15,20 30,21 45,15 60,16 75,10 90,12 105,6 120,4 120,28 0,28" stroke="none">
+                        </polyline>
+                        <circle cx="120" cy="4" fill="#c4351d" r="2.4"></circle>
+                    </svg>
+                    <span class="spark-meta">+active builds</span>
+                </div>
+                <div class="ticker-cell reveal tnum" data-d="1">
+                    <div class="lbl">Admin dashboards</div>
+                    <div class="num">05<sup>+</sup></div>
+                    <svg aria-hidden="true" class="spark" preserveaspectratio="none" viewbox="0 0 120 28">
+                        <g fill="currentColor">
+                            <rect height="10" width="8" x="2" y="18"></rect>
+                            <rect height="12" width="8" x="14" y="16"></rect>
+                            <rect height="14" width="8" x="26" y="14"></rect>
+                            <rect height="17" width="8" x="38" y="11"></rect>
+                            <rect height="15" width="8" x="50" y="13"></rect>
+                            <rect height="19" width="8" x="62" y="9"></rect>
+                            <rect height="21" width="8" x="74" y="7"></rect>
+                            <rect height="23" width="8" x="86" y="5"></rect>
+                            <rect height="22" width="8" x="98" y="6"></rect>
+                            <rect fill="#c4351d" height="26" width="8" x="110" y="2"></rect>
+                        </g>
+                    </svg>
+                    <span class="spark-meta">business apps</span>
+                </div>
+                <div class="ticker-cell reveal tnum" data-d="2">
+                    <div class="lbl">Workflow impact</div>
+                    <div class="num">95<sup>%</sup></div>
+                    <svg aria-hidden="true" class="spark" preserveaspectratio="none" viewbox="0 0 120 28">
+                        <line stroke="rgba(20,19,15,0.12)" stroke-dasharray="2 3" x1="0" x2="120" y1="14" y2="14">
+                        </line>
+                        <polyline fill="none" points="0,18 20,16 40,14 60,11 80,12 100,8 120,9" stroke="currentColor"
+                            stroke-width="1.4"></polyline>
+                        <circle cx="120" cy="9" fill="#c4351d" r="2.4"></circle>
+                    </svg>
+                    <span class="spark-meta">manual effort cut</span>
+                </div>
+                <div class="ticker-cell reveal tnum" data-d="3">
+                    <div class="lbl">Availability</div>
+                    <div class="num">Open</div>
+                    <svg aria-hidden="true" class="spark" preserveaspectratio="none" viewbox="0 0 120 28">
+                        <polyline fill="none" points="0,12 30,12 30,10 60,10 60,8 90,8 90,6 120,6" stroke="currentColor"
+                            stroke-width="1.4"></polyline>
+                        <line stroke="rgba(20,19,15,0.15)" stroke-dasharray="2 3" x1="0" x2="120" y1="20" y2="20">
+                        </line>
+                        <circle cx="120" cy="6" fill="#c4351d" r="2.4"></circle>
+                    </svg>
+                    <span class="spark-meta">freelance / full-time</span>
+                </div>
+            </div>
+        </section>
+        <!-- placeholder:about -->
+        <!-- ========== ABOUT ========== -->
+        <section class="section" id="about">
+            <div class="wrap">
+                <header class="section-head reveal">
+                    <div class="num">§ I.<br />About</div>
+                    <div class="title">
+                        <h2>A focused <span class="it">Django developer</span> —<br />building systems that teams can
+                            actually use.</h2>
+                        <p class="deck">Backend-first portfolio covering dashboards, REST APIs, automation, CMS systems
+                            and practical client delivery.</p>
+                    </div>
+                </header>
+                <div class="about-grid">
+                    <figure class="portrait-frame reveal">
+                        <div class="svg-wrap">
+                            <img src="nihal_processed.jpg" alt="Nihal Kumar Pandit" />
+                        </div>
+                        <figcaption class="cap">
+                            <span><b>Plate I.</b> Portrait</span>
+                            <span>Ranchi, IN</span>
+                        </figcaption>
+                    </figure>
+                    <div class="about-prose reveal" data-d="1">
+                        <p class="lede">I build <em>clean, secure and scalable</em> web applications — admin panels,
+                            dashboards, automation tools, CMS systems and REST APIs that help real businesses move
+                            faster.</p>
+                        <div class="cols">
+                            <p>My main stack is Python, Django, Django REST Framework, PostgreSQL and MySQL, with HTML,
+                                CSS and JavaScript for polished user interfaces. I focus on database structure,
+                                role-based access, maintainable code and deployment-ready Django applications.</p>
+                            <p>At Brightcode Pvt Ltd, I work on client-focused Django systems, API development,
+                                dashboard features and workflow automation. My work includes an AI-assisted textile
+                                workflow tool, role-based dashboards, testing improvements and production-oriented
+                                backend modules.</p>
+                            <p>I like practical engineering: clear data models, clean admin flows, useful reports,
+                                proper validations, readable code and features that are simple enough for non-technical
+                                users to operate every day.</p>
+                        </div>
+                        <dl class="about-facts">
+                            <dt>Based in</dt>
+                            <dd>Ranchi, Jharkhand · India</dd>
+                            <dt>Current role</dt>
+                            <dd>Python Django Developer · Brightcode Pvt Ltd</dd>
+                            <dt>Education</dt>
+                            <dd>BCA FinTech &amp; AI · Amity Online + Diploma in Computer Engineering</dd>
+                            <dt>Open to</dt>
+                            <dd>Freelance projects, Django dashboards, backend roles</dd>
+                            <dt>Email</dt>
+                            <dd><a href="mailto:nihalpandit000@gmail.com">nihalpandit000@gmail.com</a></dd>
+                            <dt>Phone</dt>
+                            <dd><a href="tel:+917631414263">+91 7631414263</a></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ========== STACK (radar + categorised) ========== -->
+        <section class="section" id="stack" style="padding-top: 0;">
+            <div class="wrap">
+                <header class="section-head reveal">
+                    <div class="num">§ II.<br />Stack</div>
+                    <div class="title">
+                        <h2>The stack I use —<br />for <span class="it">real Django builds</span>.</h2>
+                        <p class="deck">Practical tools for backend systems, dashboards, APIs, automation and
+                            deployment-ready web applications.</p>
+                    </div>
+                </header>
+                <div class="stack-grid">
+                    <!-- RADAR CHART -->
+                    <div class="radar-card reveal">
+                        <div class="head">
+                            <span class="ttl">Fig. 01 — Proficiency radar</span>
+                            <span class="lbl">0 → 100%</span>
+                        </div>
+                        <svg aria-label="Skill proficiency radar chart" class="radar" role="img" viewbox="0 0 400 400">
+                            <defs>
+                                <pattern height="6" id="hatch" patterntransform="rotate(45)"
+                                    patternunits="userSpaceOnUse" width="6">
+                                    <line stroke="#c4351d" stroke-width="1.4" x1="0" x2="0" y1="0" y2="6"></line>
+                                </pattern>
+                            </defs>
+                            <!-- grid rings (hexagons) -->
+                            <g fill="none" stroke="#cfc8b8" stroke-width="0.8">
+                                <polygon points="200,50 330,125 330,275 200,350 70,275 70,125"></polygon>
+                                <polygon
+                                    points="200,87.5 297.5,143.75 297.5,256.25 200,312.5 102.5,256.25 102.5,143.75">
+                                </polygon>
+                                <polygon points="200,125 265,162.5 265,237.5 200,275 135,237.5 135,162.5"></polygon>
+                                <polygon
+                                    points="200,162.5 232.5,181.25 232.5,218.75 200,237.5 167.5,218.75 167.5,181.25">
+                                </polygon>
+                            </g>
+                            <!-- axes -->
+                            <g stroke="#cfc8b8" stroke-width="0.8">
+                                <line x1="200" x2="200" y1="200" y2="50"></line>
+                                <line x1="200" x2="330" y1="200" y2="125"></line>
+                                <line x1="200" x2="330" y1="200" y2="275"></line>
+                                <line x1="200" x2="200" y1="200" y2="350"></line>
+                                <line x1="200" x2="70" y1="200" y2="275"></line>
+                                <line x1="200" x2="70" y1="200" y2="125"></line>
+                            </g>
+                            <!-- data polygon -->
+                            <polygon fill="url(#hatch)" fill-opacity="0.55"
+                                points="200,80 310.5,136.25 304,260 200,342.5 83,267.5 89.5,136.25" stroke="#c4351d"
+                                stroke-linejoin="round" stroke-width="1.6"></polygon>
+                            <!-- value dots -->
+                            <g fill="#14130f">
+                                <circle cx="200" cy="80" r="3"></circle>
+                                <circle cx="310.5" cy="136.25" r="3"></circle>
+                                <circle cx="304" cy="260" r="3"></circle>
+                                <circle cx="200" cy="342.5" r="3"></circle>
+                                <circle cx="83" cy="267.5" r="3"></circle>
+                                <circle cx="89.5" cy="136.25" r="3"></circle>
+                            </g>
+                            <!-- labels -->
+                            <g fill="#2f2c25" font-family="JetBrains Mono" font-size="10.5" letter-spacing="1.4"
+                                text-anchor="middle">
+                                <text x="200" y="34">BACKEND · 80</text>
+                                <text x="350" y="115">API · 85</text>
+                                <text x="350" y="290">DATABASE · 80</text>
+                                <text x="200" y="376">FRONTEND · 95</text>
+                                <text x="56" y="290">DEVOPS · 90</text>
+                                <text x="56" y="115">TOOLING · 85</text>
+                            </g>
+                            <!-- centre tick -->
+                            <circle cx="200" cy="200" fill="#c4351d" r="2"></circle>
+                        </svg>
+                        <div class="legend">
+                            <span><span class="swatch"></span>NKP — Jun '26</span>
+                            <span>n = 4 prod. projects</span>
+                        </div>
+                    </div>
+                    <!-- CATEGORISED LIST -->
+                    <div class="reveal" data-d="1">
+                        <div class="stack-list">
+                            <div class="group">
+                                <div class="gh"><span class="name">Languages</span><span class="num">03</span></div>
+                                <ul>
+                                    <li>Python <span class="meta hi">Primary</span></li>
+                                    <li>JavaScript <span class="meta">Daily</span></li>
+                                    <li>SQL <span class="meta">Beginner</span></li>
+                                </ul>
+                            </div>
+                            <div class="group">
+                                <div class="gh"><span class="name">Frameworks</span><span class="num">06</span></div>
+                                <ul>
+                                    <li>Django <span class="meta hi">Primary</span></li>
+                                    <li>Django REST Framework <span class="meta hi">Primary</span></li>
+                                    <li>Bootstrap <span class="meta">UI builds</span></li>
+                                    <li>Django Templates <span class="meta">Daily</span></li>
+                                    <li>three.js <span class="meta">Creative</span></li>
+                                    <li>React <span class="meta">Interactive</span></li>
+                                </ul>
+                            </div>
+                            <div class="group">
+                                <div class="gh"><span class="name">Databases</span><span class="num">03</span></div>
+                                <ul>
+                                    <li>PostgreSQL <span class="meta hi">Production</span></li>
+                                    <li>MySQL <span class="meta">Production</span></li>
+                                    <li>SQLite <span class="meta">Testing / local</span></li>
+                                </ul>
+                            </div>
+                            <div class="group">
+                                <div class="gh"><span class="name">Workflow</span><span class="num">03</span></div>
+                                <ul>
+                                    <li>AI Tools <span class="meta hi">Focus</span></li>
+                                    <li>Automation <span class="meta">Active</span></li>
+                                    <li>Postman <span class="meta">API testing</span></li>
+                                </ul>
+                            </div>
+                            <div class="group">
+                                <div class="gh"><span class="name">Specialties</span><span class="num">07</span></div>
+                                <ul>
+                                    <li>Admin panels <span class="meta hi">Specialty</span></li>
+                                    <li>Role-based dashboards <span class="meta hi">Specialty</span></li>
+                                    <li>REST APIs <span class="meta hi">Strong</span></li>
+                                    <li>SMS / email integrations <span class="meta">Strong</span></li>
+                                    <li>Business automation <span class="meta">Strong</span></li>
+                                    <li>CMS systems <span class="meta">Strong</span></li>
+                                    <li>Testing &amp; reporting <span class="meta">Strong</span></li>
+                                </ul>
+                            </div>
+                            <div class="group">
+                                <div class="gh"><span class="name">Deployment</span><span class="num">06</span></div>
+                                <ul>
+                                    <li>Gunicorn / Nginx <span class="meta">Comfortable</span></li>
+                                    <li>cPanel Python apps <span class="meta">Comfortable</span></li>
+                                    <li>C Pannel <span class="meta">Accessible</span></li>
+                                    <li>Environment variables <span class="meta">Comfortable</span></li>
+                                    <li>Static / media handling <span class="meta">Comfortable</span></li>
+                                    <li>Backup planning <span class="meta">Comfortable</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ========== WORK (case studies with bar charts) ========== -->
+        <section class="section" id="work" style="padding-top: 0;">
+            <div class="wrap">
+                <header class="section-head reveal">
+                    <div class="num">§ III.<br />Work</div>
+                    <div class="title">
+                        <h2>Selected <span class="it">project work</span> —<br />dashboards, automation and backend
+                            systems.</h2>
+                        <p class="deck">A focused set of projects that show how I approach Django apps, admin systems,
+                            client workflows and production-ready features.</p>
+                    </div>
+                </header>
+                <!-- CASE 01 -->
+                <article class="case reveal">
+                    <div class="case-meta">
+                        <div class="num">Case / 01</div>
+                        <div class="year">2026 — Kingjacq AI</div>
+                        <span class="role">Lead Backend</span>
+                        <h3>Kingjacq AI</h3>
+                        <div class="tags">
+                            <span>Python</span><span>Django</span><span>AI</span><span>Textiles</span><span>Payments</span>
+                        </div>
+                    </div>
+                    <div class="case-body">
+                        <p>Enterprise-grade Jacquard design software built in Django. Kingjacq AI converts rough textile sketches into polished, production-ready patterns while managing subscription plans, payment flows and export workflows.</p>
+                        <div class="pull">Built for designers who need consistent, repeat-ready textile outputs with managed access controls.</div>
+                        <p>The platform combines AI-assisted sketch refinement, license management and export workflows into a single production pipeline.</p>
+                        <div class="metric-card">
+                            <div class="h">
+                                <span class="t">Implementation focus</span>
+                                <span class="l">module strength</span>
+                            </div>
+                            <div class="bar-chart" data-animate="">
+                                <div class="row"><span>Design automation</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                                <div class="row"><span>Subscription flow</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>Export workflow</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                                <div class="row"><span>Backend stability</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <!-- CASE 02 -->
+                <article class="case reveal">
+                    <div class="case-meta">
+                        <div class="num">Case / 02</div>
+                        <div class="year">2025 — 2026 · SPD Infragroup</div>
+                        <span class="role">Full-stack</span>
+                        <h3>SPD Infragroup</h3>
+                        <div class="tags">
+                            <span>Django</span><span>DRF</span><span>PostgreSQL</span><span>RBAC</span><span>Reports</span>
+                        </div>
+                    </div>
+                    <div class="case-body">
+                        <p>A construction operations platform that streamlines BOQ-driven procurement, inventory tracking and multi-role approvals across Admin, Store, Supervisor and Engineer teams.</p>
+                        <p>The system delivers clean project controls, purchase approvals and stock visibility for large field operations.</p>
+                        <div class="metric-card">
+                            <div class="h">
+                                <span class="t">Implementation focus</span>
+                                <span class="l">module strength</span>
+                            </div>
+                            <div class="bar-chart" data-animate="">
+                                <div class="row"><span>RBAC control</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>BOQ workflows</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                                <div class="row"><span>Stock tracking</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>Expense reports</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <!-- CASE 03 -->
+                <article class="case reveal">
+                    <div class="case-meta">
+                        <div class="num">Case / 03</div>
+                        <div class="year">2025 — Convenant Matrimonial</div>
+                        <span class="role">Contributor</span>
+                        <h3>Convenant Matrimonial</h3>
+                        <div class="tags">
+                            <span>Django</span><span>RBAC</span><span>Matching</span><span>Verification</span><span>Community</span>
+                        </div>
+                    </div>
+                    <div class="case-body">
+                        <p>A church-focused matrimonial platform with verified matching, branch-level approval, lead management, document verification and community engagement features.</p>
+                        <p>The system supports structured profiles, approval workflows and premium service layers for verified matches.</p>
+                        <div class="metric-card">
+                            <div class="h">
+                                <span class="t">Implementation focus</span>
+                                <span class="l">module strength</span>
+                            </div>
+                            <div class="bar-chart" data-animate="">
+                                <div class="row"><span>Branch management</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>Profile verification</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>Matching workflows</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>Community tools</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <!-- ========== EXPERIENCE (gantt + detail) ========== -->
+        <section class="section" id="experience" style="padding-top: 0;">
+            <div class="wrap">
+                <header class="section-head reveal">
+                    <div class="num">§ IV.<br />Experience</div>
+                    <div class="title">
+                        <h2>Experience &amp; <span class="it">education</span> —<br />practical backend work.</h2>
+                        <p class="deck">Hands-on development experience in Django apps, APIs, dashboards, automation and
+                            client requirement delivery.</p>
+                    </div>
+                </header>
+                <div class="gantt reveal">
+                    <div class="head">
+                        <span class="ttl">Fig. 06 — Engagement timeline</span>
+                        <span class="lbl">2025 → 2026</span>
+                    </div>
+                    <div class="scale">
+                        <span></span>
+                        <span>Q1·25</span><span>Q2·25</span><span>Q3·25</span><span>Q4·25</span>
+                        <span>Q1·26</span><span>Q2·26</span><span>Q3·26</span><span>Q4·26</span>
+                    </div>
+                    <div class="row">
+                        <div class="who">
+                            <div class="r">Codezeal Pvt Ltd</div>
+                            <div class="o">Python Intern</div>
+                        </div>
+                        <div class="track">
+                            <div class="bar" style="left: 29.2%; width: 29.2%;">
+                                <span class="lbl">Aug '25 — Feb '26</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="who">
+                            <div class="r">Brightcode Pvt Ltd</div>
+                            <div class="o">Django Developer</div>
+                        </div>
+                        <div class="track">
+                            <div class="bar current" style="left: 62.5%; width: 30%;">
+                                <span class="lbl">Apr '26 — Present</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="who">
+                            <div class="r">BCA · FinTech &amp; AI</div>
+                            <div class="o">Amity Online · ongoing</div>
+                        </div>
+                        <div class="track">
+                            <div class="bar" style="left: 8%; width: 84%; background: #97917e; border-color: #6b6757;">
+                                <span class="lbl">Coursework · ongoing</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="who">
+                            <div class="r">Diploma · Computer Engineering</div>
+                            <div class="o">Completed · 70%</div>
+                        </div>
+                        <div class="track">
+                            <div class="bar" style="left: 0%; width: 55%; background: #5a5a2b; border-color: #5a5a2b;">
+                                <span class="lbl">Completed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="exp-detail-grid reveal" data-d="1">
+                    <article class="exp-block">
+                        <div class="role">Python Django Developer</div>
+                        <div class="when">Brightcode Pvt Ltd, Ranchi · Apr 2026 — Present</div>
+                        <ul>
+                            <li>Building Django web applications, dashboards and backend systems for client teams.</li>
+                            <li>Designing REST APIs using Django REST Framework.</li>
+                            <li>Working on database models, admin panels, validation and automation workflows.</li>
+                            <li>Converting client requirements into clear technical features and deliverables.</li>
+                            <li>Worked on an AI-assisted textile workflow tool that reduced manual effort.</li>
+                        </ul>
+                    </article>
+                    <article class="exp-block">
+                        <div class="role">Python Intern</div>
+                        <div class="when">Codezeal Pvt Ltd · Aug 2025 — Feb 2026</div>
+                        <ul>
+                            <li>Developed full-stack websites, CMS flows and admin panels.</li>
+                            <li>Implemented backend features and API integrations.</li>
+                            <li>Used Git, GitHub and Postman during day-to-day development.</li>
+                            <li>Improved practical understanding of Python, Django, databases and web application
+                                delivery.</li>
+                        </ul>
+                    </article>
+                </div>
+                <div class="edu-row reveal" data-d="2">
+                    <div class="edu">
+                        <div class="yr">'26</div>
+                        <div class="body">
+                            <div class="deg">BCA — FinTech &amp; AI</div>
+                            <div class="sch">Amity University Online · Pursuing</div>
+                        </div>
+                        <span class="badge">In progress</span>
+                    </div>
+                    <div class="edu">
+                        <div class="yr">70<span style="font-size:0.5em">%</span></div>
+                        <div class="body">
+                            <div class="deg">Diploma · Computer Engineering</div>
+                            <div class="sch">Completed</div>
+                        </div>
+                        <span class="badge">Completed</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ========== SERVICES ========== -->
+        <section class="section" id="services" style="padding-top: 0;">
+            <div class="wrap">
+                <header class="section-head reveal">
+                    <div class="num">§ V.<br />Services</div>
+                    <div class="title">
+                        <h2>Services I can <span class="it">deliver</span> —<br />from idea to deployment.</h2>
+                        <p class="deck">Useful for freelance clients who need dashboards, backend systems, APIs,
+                            automation, SMS/email workflows and maintained Django applications.</p>
+                    </div>
+                </header>
+                <div class="services-grid reveal">
+                    <article class="svc">
+                        <div class="top"><span class="n">№ 01</span><span>Backend</span></div>
+                        <h3>Custom Django websites</h3>
+                        <p>Marketing sites, internal tools and product apps on a solid Django foundation, ready for real
+                            traffic.</p>
+                        <span class="arrow">→</span>
+                    </article>
+                    <article class="svc">
+                        <div class="top"><span class="n">№ 02</span><span>UI / Backend</span></div>
+                        <h3>Admin dashboards</h3>
+                        <p>Role-based dashboards with auth, search, filters, exports and reports non-technical teams
+                            actually use.</p>
+                        <span class="arrow">→</span>
+                    </article>
+                    <article class="svc">
+                        <div class="top"><span class="n">№ 03</span><span>API</span></div>
+                        <h3>REST API development</h3>
+                        <p>Clean, versioned, well-documented DRF APIs designed for web and mobile clients without future
+                            regret.</p>
+                        <span class="arrow">→</span>
+                    </article>
+                    <article class="svc">
+                        <div class="top"><span class="n">№ 04</span><span>Automation</span></div>
+                        <h3>Business automation</h3>
+                        <p>Python scripts and Django backends that quietly retire spreadsheets, copy-paste and "we
+                            always do it manually".</p>
+                        <span class="arrow">→</span>
+                    </article>
+                    <article class="svc">
+                        <div class="top"><span class="n">№ 05</span><span>Product</span></div>
+                        <h3>CRM &amp; CMS development</h3>
+                        <p>Custom CRMs and editor-friendly CMS systems built around how your team actually works.</p>
+                        <span class="arrow">→</span>
+                    </article>
+                    <article class="svc">
+                        <div class="top"><span class="n">№ 06</span><span>Data</span></div>
+                        <h3>Database design</h3>
+                        <p>Sensible PostgreSQL / MySQL schemas, sane migrations, indexes that keep the app fast as data
+                            grows.</p>
+                        <span class="arrow">→</span>
+                    </article>
+                    <article class="svc">
+                        <div class="top"><span class="n">№ 07</span><span>DevOps</span></div>
+                        <h3>Deployment</h3>
+                        <p>Production-ready deploys of Django apps with environment configs, static handling and
+                            zero-downtime updates.</p>
+                        <span class="arrow">→</span>
+                    </article>
+                    <article class="svc">
+                        <div class="top"><span class="n">№ 08</span><span>Maintenance</span></div>
+                        <h3>Bug-fixing &amp; maintenance</h3>
+                        <p>Picking up a messy Django codebase, taming it, fixing what's broken and quietly making it
+                            nicer to work on.</p>
+                        <span class="arrow">→</span>
+                    </article>
+                    <article class="svc">
+                        <div class="top"><span class="n">№ 09</span><span>Integrations</span></div>
+                        <h3>SMS &amp; email integration</h3>
+                        <p>Transactional email, OTPs, notifications and SMS flows wired into your app with retries and
+                            logging.</p>
+                        <span class="arrow">→</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- ========== CONTACT ========== -->
+        <section class="section contact" id="contact" style="padding-top: 0;">
+            <div class="wrap">
+                <header class="section-head reveal">
+                    <div class="num">§ VI.<br />Contact</div>
+                    <div class="title">
+                        <h2>Have a <span class="it">project</span> —<br />or a role in mind?</h2>
+                        <p class="deck">Email or call directly for freelance projects, Django dashboard work, backend
+                            roles or collaboration.</p>
+                    </div>
+                </header>
+                <div class="contact-card reveal">
+                    <h2 class="contact-h">
+                        Have a project<br />
+                        in mind? <em>Let's</em><br />
+                        <a href="mailto:nihalpandit000@gmail.com">build it together.</a>
+                    </h2>
+                    <dl class="contact-grid">
+                        <div class="contact-cell">
+                            <div class="l">Email</div>
+                            <div class="v"><a href="mailto:nihalpandit000@gmail.com">nihalpandit000@gmail.com</a></div>
+                        </div>
+                        <div class="contact-cell">
+                            <div class="l">Phone</div>
+                            <div class="v"><a href="tel:+917631414263">+91 7631414263</a></div>
+                        </div>
+                        <div class="contact-cell">
+                            <div class="l">GitHub</div>
+                            <div class="v"><a href="https://github.com/nihalpandit000" rel="noopener"
+                                    target="_blank">github.com/nihalpandit000</a></div>
+                        </div>
+                        <div class="contact-cell">
+                            <div class="l">LinkedIn</div>
+                            <div class="v"><a href="https://www.linkedin.com/in/nihalpandit000/" rel="noopener"
+                                    target="_blank">linkedin.com/in/nihalpandit000</a></div>
+                        </div>
+                        <div class="contact-cell">
+                            <div class="l">Location</div>
+                            <div class="v">Ranchi, Jharkhand · India</div>
+                        </div>
+                        <div class="contact-cell">
+                            <div class="l">Availability</div>
+                            <div class="v"><span class="ok">Open for freelance &amp; full-time</span></div>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- ========== COLOPHON ========== -->
+    <footer class="colophon">
+        <div class="wrap row">
+            <div>© <span id="year">2026</span> · Nihal Kumar Pandit</div>
+            <div>Built with clean HTML, CSS &amp; vanilla JavaScript.</div>
+            <div>
+                <a href="mailto:nihalpandit000@gmail.com">Email</a> ·
+                <a href="tel:+917631414263">Phone</a> ·
+                <a href="https://github.com/nihalpandit000" rel="noopener" target="_blank">GitHub</a> ·
+                <a href="https://www.linkedin.com/in/nihalpandit000/" rel="noopener" target="_blank">LinkedIn</a> ·
+                <a href="#top">↑ Top</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        /* ===========================================================
+   Portfolio v3 — editorial interactions
+   Plain vanilla JS, no dependencies.
+   =========================================================== */
+
+        (function () {
+            'use strict';
+            const $ = (s, c = document) => c.querySelector(s);
+            const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+
+            /* --- Today's date in the masthead --- */
+            const dEl = $('#today');
+            if (dEl) {
+                const opts = { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' };
+                dEl.textContent = new Date().toLocaleDateString('en-GB', opts).replace(',', '');
+            }
+            const yEl = $('#year');
+            if (yEl) yEl.textContent = new Date().getFullYear();
+
+            /* --- Sticky sub-nav shadow --- */
+            const sub = $('#subnav');
+            const onScroll = () => sub && sub.classList.toggle('is-scrolled', window.scrollY > 12);
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+
+            /* --- Mobile menu --- */
+            const tog = $('#navToggle');
+            const menu = $('#mobileMenu');
+            if (tog && menu) {
+                const close = () => {
+                    tog.classList.remove('is-open');
+                    menu.classList.remove('is-open');
+                    tog.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                };
+                tog.addEventListener('click', () => {
+                    const open = !menu.classList.contains('is-open');
+                    tog.classList.toggle('is-open', open);
+                    menu.classList.toggle('is-open', open);
+                    tog.setAttribute('aria-expanded', String(open));
+                    document.body.style.overflow = open ? 'hidden' : '';
+                });
+                $$('a', menu).forEach(a => a.addEventListener('click', close));
+                window.addEventListener('resize', () => { if (window.innerWidth > 920) close(); });
+            }
+
+            /* --- Reveal on scroll --- */
+            if ('IntersectionObserver' in window) {
+                const io = new IntersectionObserver((entries) => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+                    });
+                }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+                $$('.reveal').forEach(el => io.observe(el));
+            } else {
+                $$('.reveal').forEach(el => el.classList.add('is-in'));
+            }
+
+            /* --- Active nav link based on section in view --- */
+            const navAnchors = $$('.subnav-links a[href^="#"]');
+            const map = new Map();
+            navAnchors.forEach(a => {
+                const id = a.getAttribute('href').slice(1);
+                const el = document.getElementById(id);
+                if (el) map.set(el, a);
+            });
+            if ('IntersectionObserver' in window && map.size) {
+                const obs = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const a = map.get(entry.target);
+                        if (!a) return;
+                        if (entry.isIntersecting) {
+                            navAnchors.forEach(x => x.classList.remove('active'));
+                            a.classList.add('active');
+                        }
+                    });
+                }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+                map.forEach((_, sec) => obs.observe(sec));
+            }
+
+            /* --- Animated bar charts: set width when in view --- */
+            if ('IntersectionObserver' in window) {
+                const bio = new IntersectionObserver((entries) => {
+                    entries.forEach(e => {
+                        if (!e.isIntersecting) return;
+                        $$('.bar-chart .fill', e.target).forEach((f, i) => {
+                            const w = parseInt(f.dataset.w || '0', 10);
+                            setTimeout(() => { f.style.width = w + '%'; }, i * 70);
+                        });
+                        bio.unobserve(e.target);
+                    });
+                }, { threshold: 0.2 });
+                $$('[data-animate]').forEach(c => bio.observe(c));
+            } else {
+                $$('.bar-chart .fill').forEach(f => f.style.width = (f.dataset.w || 0) + '%');
+            }
+        })();
+
+    </script>
+</body>
+
+</html>
