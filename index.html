@@ -95,9 +95,6 @@
             background-image: none;
             opacity: 0;
         }
-            opacity: 0.7;
-            mix-blend-mode: multiply;
-        }
 
         .wrap {
             max-width: var(--container);
@@ -151,33 +148,36 @@
         h2,
         h3,
         h4 {
-            font-family: var(--serif);
-            font-weight: 400;
-            letter-spacing: -0.012em;
+            font-family: var(--sans);
+            font-weight: 700;
+            letter-spacing: -0.01em;
             color: var(--ink);
             margin: 0;
         }
 
         h1 {
-            font-size: clamp(56px, 9vw, 148px);
-            line-height: 0.92;
-            letter-spacing: -0.035em;
+            font-size: clamp(52px, 8vw, 96px);
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            font-weight: 800;
         }
 
         h2 {
-            font-size: clamp(40px, 5.2vw, 76px);
-            line-height: 0.98;
-            letter-spacing: -0.022em;
+            font-size: clamp(32px, 5vw, 64px);
+            line-height: 1.08;
+            letter-spacing: -0.012em;
+            font-weight: 700;
         }
 
         h3 {
             font-size: clamp(22px, 2.2vw, 28px);
-            line-height: 1.15;
+            line-height: 1.2;
+            font-weight: 600;
         }
 
         .it {
             font-style: italic;
-            font-weight: 300;
+            font-weight: 500;
         }
 
         /* ===========================================================
@@ -185,9 +185,9 @@
    =========================================================== */
         .mast {
             border-bottom: 1px solid var(--rule);
-            font-family: var(--mono);
-            font-size: 11px;
-            letter-spacing: 0.14em;
+            font-family: var(--sans);
+            font-size: 12px;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
             color: var(--ink-2);
         }
@@ -213,11 +213,11 @@
 
         .mast-row .mid {
             text-align: center;
-            font-family: var(--serif);
+            font-family: var(--sans);
             font-size: 13px;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.02em;
             text-transform: none;
-            font-style: italic;
+            font-style: normal;
             color: var(--muted);
         }
 
@@ -274,20 +274,21 @@
             display: inline-flex;
             align-items: baseline;
             gap: 10px;
-            font-family: var(--serif);
-            font-size: 22px;
+            font-family: var(--sans);
+            font-size: 20px;
             letter-spacing: -0.02em;
+            font-weight: 700;
         }
 
         .brand .amp {
             color: var(--red);
-            font-style: italic;
+            font-style: normal;
         }
 
         .brand small {
-            font-family: var(--mono);
+            font-family: var(--sans);
             font-size: 10px;
-            letter-spacing: 0.18em;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
             color: var(--muted);
         }
@@ -295,7 +296,7 @@
         .subnav-links {
             display: flex;
             align-items: center;
-            gap: 2px;
+            gap: 10px;
             list-style: none;
             margin: 0;
             padding: 0;
@@ -303,13 +304,13 @@
 
         .subnav-links a {
             display: inline-flex;
-            align-items: baseline;
+            align-items: center;
             gap: 6px;
             padding: 8px 12px;
-            font-family: var(--mono);
-            font-size: 11px;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
+            font-family: var(--sans);
+            font-size: 12px;
+            letter-spacing: 0.04em;
+            text-transform: none;
             color: var(--ink-2);
             position: relative;
             transition: color .2s ease;
@@ -481,50 +482,70 @@
         }
 
         .hero h1 {
-            font-weight: 400;
-            font-feature-settings: "ss01" on, "liga" on;
-            font-size: clamp(42px, 7vw, 96px);
-            line-height: 1.02;
+            font-family: var(--sans);
+            font-weight: 800;
+            font-size: clamp(46px, 7vw, 88px);
+            line-height: 1.04;
+            letter-spacing: -0.02em;
         }
 
         .hero h1 .red {
             color: var(--red);
-            font-style: italic;
-            font-weight: 300;
+            font-style: normal;
+            font-weight: 700;
         }
 
-        .hero h1 .quote {
-            position: relative;
-            padding-left: 0.18em;
-        }
-
-        .hero h1 .quote::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            font-size: 0;
-            color: transparent;
-        }
-
+        .hero h1 .quote,
         .hero h1 .underscore {
-            display: inline-block;
-            position: relative;
+            position: static;
+            padding: 0;
         }
 
         .hero h1 .underscore::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0.04em;
-            height: 0.06em;
-            background: var(--ink);
-            transform: scaleX(0);
-            transform-origin: left;
-            animation: rule-in 1.1s 0.4s cubic-bezier(.4, .2, .2, 1) forwards;
+            display: none;
         }
 
+        .hero-deck {
+            font-family: var(--sans);
+            font-size: clamp(17px, 1.1vw, 19px);
+            line-height: 1.6;
+            color: var(--ink-2);
+            font-weight: 400;
+            margin: 0 0 24px;
+        }
+
+        .hero-deck em {
+            color: var(--red);
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 22px;
+            border-radius: 8px;
+            font-family: var(--sans);
+            font-size: 13px;
+            letter-spacing: 0;
+            text-transform: none;
+            border: 1px solid var(--ink);
+            background: var(--ink);
+            color: var(--paper);
+            transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--ink);
+            border-color: var(--ink);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(17, 17, 17, 0.06);
+            color: var(--ink);
+        }
         @keyframes rule-in {
             to {
                 transform: scaleX(1);
@@ -707,16 +728,33 @@
 
         @media (max-width: 720px) {
             .ticker-row {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr;
             }
 
-            .ticker-cell:nth-child(2) {
+            .ticker-cell {
                 border-right: 0;
+                border-bottom: 1px solid var(--rule-2);
+                padding: 18px 18px 20px;
             }
 
-            .ticker-cell:nth-child(1),
-            .ticker-cell:nth-child(2) {
-                border-bottom: 1px solid var(--rule-2);
+            .ticker-cell:last-child {
+                border-bottom: 0;
+            }
+
+            .ticker-cell .num {
+                font-size: clamp(28px, 8vw, 44px);
+            }
+
+            .ticker-cell .spark {
+                height: 22px;
+                margin-top: 14px;
+            }
+
+            .ticker-cell .spark-meta {
+                position: static;
+                display: block;
+                margin-top: 10px;
+                color: var(--ink-2);
             }
         }
 
@@ -1252,30 +1290,35 @@
    Experience (gantt-style horizontal)
    =========================================================== */
         .gantt {
-            border: 1px solid var(--rule);
+            border: 1px solid var(--rule-2);
             background: var(--card);
-            padding: 28px;
+            padding: 30px 28px 28px;
             margin-bottom: 36px;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(17, 17, 17, 0.04);
         }
 
         .gantt .head {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            border-bottom: 1px solid var(--rule);
-            padding-bottom: 10px;
+            border-bottom: 1px solid var(--rule-2);
+            padding-bottom: 14px;
             margin-bottom: 18px;
+            gap: 20px;
         }
 
         .gantt .head .ttl {
-            font-family: var(--serif);
-            font-size: 18px;
+            font-family: var(--sans);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--ink-2);
         }
 
         .gantt .head .lbl {
             font-family: var(--mono);
-            font-size: 10px;
-            letter-spacing: 0.16em;
+            font-size: 11px;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
             color: var(--muted);
         }
@@ -1286,21 +1329,23 @@
             gap: 0;
             border-top: 1px solid var(--rule-2);
             border-bottom: 1px solid var(--rule-2);
-            padding: 6px 0;
+            padding: 12px 0 10px;
             font-family: var(--mono);
             font-size: 10px;
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: var(--muted);
+            align-items: center;
         }
 
         .gantt .scale span {
             padding: 0 6px;
-            border-right: 1px dotted var(--rule-2);
+            border-right: 1px solid var(--rule-2);
         }
 
         .gantt .scale span:first-child {
             border-right: 1px solid var(--rule-2);
+            opacity: 0;
         }
 
         .gantt .scale span:last-child {
@@ -1313,7 +1358,7 @@
             align-items: center;
             gap: 0;
             border-bottom: 1px dotted var(--rule-2);
-            padding: 14px 0;
+            padding: 18px 0;
         }
 
         .gantt .row:last-child {
@@ -1321,73 +1366,70 @@
         }
 
         .gantt .row .who {
-            padding-right: 12px;
+            padding-right: 18px;
             border-right: 1px solid var(--rule-2);
         }
 
         .gantt .row .who .r {
-            font-family: var(--serif);
-            font-size: 16px;
+            font-family: var(--sans);
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--ink);
         }
 
         .gantt .row .who .o {
             font-family: var(--mono);
             font-size: 10px;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
             color: var(--muted);
-            margin-top: 3px;
+            margin-top: 6px;
         }
 
         .gantt .row .track {
             position: relative;
-            height: 22px;
+            min-height: 26px;
             margin-left: 8px;
-            background:
-                repeating-linear-gradient(to right, transparent 0, transparent calc(12.5% - 1px), var(--rule-2) calc(12.5% - 1px), var(--rule-2) 12.5%);
+            border-radius: 999px;
+            background: linear-gradient(90deg, transparent 0%, transparent 12.4%, var(--rule-2) 12.5%, var(--rule-2) 12.6%, transparent 12.6%, transparent 24.9%, var(--rule-2) 25%, var(--rule-2) 25.1%, transparent 25.1%, transparent 37.4%, var(--rule-2) 37.5%, var(--rule-2) 37.6%, transparent 37.6%, transparent 49.9%, var(--rule-2) 50%, var(--rule-2) 50.1%, transparent 50.1%, transparent 62.4%, var(--rule-2) 62.5%, var(--rule-2) 62.6%, transparent 62.6%, transparent 74.9%, var(--rule-2) 75%, var(--rule-2) 75.1%, transparent 75.1%, transparent 87.4%, var(--rule-2) 87.5%, var(--rule-2) 87.6%, transparent 87.6%, transparent 100%);
         }
 
         .gantt .row .bar {
             position: absolute;
-            top: 3px;
-            bottom: 3px;
+            top: 4px;
+            bottom: 4px;
+            border-radius: 999px;
             background: var(--red);
             border: 1px solid color-mix(in oklab, var(--red), #000 20%);
+            overflow: hidden;
         }
 
         .gantt .row .bar.current::after {
             content: "";
             position: absolute;
-            right: -1px;
-            top: -3px;
-            bottom: -3px;
-            width: 6px;
-            background: var(--red);
-            animation: pulse-bar 1.6s ease-in-out infinite;
-        }
-
-        @keyframes pulse-bar {
-
-            0%,
-            100% {
-                opacity: 0.4;
-            }
-
-            50% {
-                opacity: 1;
-            }
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: rgba(255, 255, 255, 0.12);
         }
 
         .gantt .row .bar .lbl {
             position: absolute;
-            left: 8px;
+            left: 12px;
             top: 50%;
             transform: translateY(-50%);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
             font-family: var(--mono);
             font-size: 9.5px;
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: var(--paper);
+            background: rgba(17, 17, 17, 0.2);
+            border-radius: 999px;
             white-space: nowrap;
         }
 
@@ -1499,11 +1541,45 @@
         @media (max-width: 760px) {
             .gantt {
                 overflow-x: auto;
+                padding-bottom: 22px;
             }
 
             .gantt .scale,
             .gantt .row {
-                grid-template-columns: 130px 1fr;
+                grid-template-columns: 140px 1fr;
+                min-width: 720px;
+            }
+
+            .gantt .head {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .gantt .row {
+                padding: 16px 0;
+            }
+
+            .gantt .row .who {
+                padding-right: 14px;
+                min-width: 140px;
+            }
+
+            .gantt .row .who .r {
+                font-size: 14px;
+            }
+
+            .gantt .row .who .o {
+                font-size: 9px;
+            }
+
+            .gantt .row .track {
+                min-width: 520px;
+            }
+
+            .gantt .row .bar .lbl {
+                left: 10px;
+                font-size: 8.8px;
+                padding: 4px 8px;
             }
 
             .exp-detail-grid,
@@ -2037,7 +2113,7 @@
         font-size: clamp(20px, 2.2vw, 28px);
     }
 
-    .label,
+    .num,
     .lbl,
     .muted {
         letter-spacing: 0;
@@ -2082,24 +2158,10 @@
 </head>
 
 <body>
-    <!-- ========== MASTHEAD ========== -->
-    <header class="mast">
-        <div class="wrap mast-row">
-            <div class="left">
-                <span><span class="pip"></span>Open to freelance &amp; full-time</span>
-                <span class="hide-sm">Portfolio · 2026</span>
-            </div>
-            <div class="mid">The Nihal Kumar Pandit Portfolio</div>
-            <div class="right">
-                <span class="hide-sm" id="today">Tue, 16 Jun 2026</span>
-                <span>Ranchi · Jharkhand · India</span>
-            </div>
-        </div>
-    </header>
     <!-- ========== SUB NAV ========== -->
     <nav aria-label="Primary" class="subnav" id="subnav">
         <div class="wrap subnav-row">
-            <a class="brand" href="#top">Nihal <span class="amp">K.</span> Pandit <small>Django Developer</small></a>
+            <a class="brand" href="#top">Nihal <span class="amp">Kumar</span> Pandit <small>Django Developer</small></a>
             <ul class="subnav-links">
                 <li><a href="#about"><span class="n">I.</span> About</a></li>
                 <li><a href="#stack"><span class="n">II.</span> Stack</a></li>
@@ -2808,7 +2870,11 @@
             if ('IntersectionObserver' in window) {
                 const io = new IntersectionObserver((entries) => {
                     entries.forEach(e => {
-                        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+                        if (e.isIntersecting) {
+                            e.target.classList.add('is-in');
+                        } else {
+                            e.target.classList.remove('is-in');
+                        }
                     });
                 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
                 $$('.reveal').forEach(el => io.observe(el));
@@ -2838,16 +2904,20 @@
                 map.forEach((_, sec) => obs.observe(sec));
             }
 
-            /* --- Animated bar charts: set width when in view --- */
+            /* --- Animated bar charts: set width when in view and reset when leaving --- */
             if ('IntersectionObserver' in window) {
                 const bio = new IntersectionObserver((entries) => {
                     entries.forEach(e => {
-                        if (!e.isIntersecting) return;
-                        $$('.bar-chart .fill', e.target).forEach((f, i) => {
-                            const w = parseInt(f.dataset.w || '0', 10);
-                            setTimeout(() => { f.style.width = w + '%'; }, i * 70);
-                        });
-                        bio.unobserve(e.target);
+                        const fills = $$('.bar-chart .fill', e.target);
+                        if (!fills.length) return;
+                        if (e.isIntersecting) {
+                            fills.forEach((f, i) => {
+                                const w = parseInt(f.dataset.w || '0', 10);
+                                setTimeout(() => { f.style.width = w + '%'; }, i * 70);
+                            });
+                        } else {
+                            fills.forEach(f => { f.style.width = '0'; });
+                        }
                     });
                 }, { threshold: 0.2 });
                 $$('[data-animate]').forEach(c => bio.observe(c));
