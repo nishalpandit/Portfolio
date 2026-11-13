@@ -9,7 +9,7 @@
     <meta content="#f4efe6" name="theme-color" />
     <title>Nihal Kumar Pandit — Django backend, Tool Devloper &amp; Automation Devloper</title>
     <meta
-        content="Nihal Kumar Pandit is a Python Django Developer from Ranchi building scalable admin dashboards, REST APIs, automation tools, CMS systems, and business web applications using Django, DRF and PostgreSQL."
+        content="Nishal Kumar Pandit is a Python Django Developer from Ranchi architecting scalable admin dashboards, REST APIs, AI automation tools (Flux AI), marketplaces, and enterprise web applications using Django, DRF, and PostgreSQL."
         name="description" />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
@@ -1929,6 +1929,51 @@
                 padding-right: 0 !important;
             }
         }
+    
+        /* ===========================================================
+   Project Filter Tabs
+   =========================================================== */
+        .project-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 28px 0 36px 0;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--rule-2);
+        }
+
+        .filter-btn {
+            font-family: var(--mono);
+            font-size: 11.5px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding: 7px 16px;
+            border-radius: 9999px;
+            border: 1px solid var(--rule);
+            background: var(--card);
+            color: var(--muted);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .filter-btn:hover {
+            color: var(--ink);
+            border-color: var(--ink);
+            transform: translateY(-1px);
+        }
+
+        .filter-btn.active {
+            background: var(--ink);
+            color: var(--paper) !important;
+            border-color: var(--ink);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+
+        .case.is-hidden {
+            display: none !important;
+        }
+
     </style>
     <style>
     /* Developer-focused overrides: cleaner sans typography and simplified element styles */
@@ -2143,6 +2188,51 @@
             padding-right: 0 !important;
         }
     }
+    
+        /* ===========================================================
+   Project Filter Tabs
+   =========================================================== */
+        .project-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 28px 0 36px 0;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--rule-2);
+        }
+
+        .filter-btn {
+            font-family: var(--mono);
+            font-size: 11.5px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding: 7px 16px;
+            border-radius: 9999px;
+            border: 1px solid var(--rule);
+            background: var(--card);
+            color: var(--muted);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .filter-btn:hover {
+            color: var(--ink);
+            border-color: var(--ink);
+            transform: translateY(-1px);
+        }
+
+        .filter-btn.active {
+            background: var(--ink);
+            color: var(--paper) !important;
+            border-color: var(--ink);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+        }
+
+        .case.is-hidden {
+            display: none !important;
+        }
+
     </style>
     <meta content="Nihal Kumar Pandit" name="author" />
     <meta
@@ -2150,7 +2240,7 @@
         name="keywords" />
     <meta content="Nihal Kumar Pandit — Python Django Developer" property="og:title" />
     <meta
-        content="Nihal Kumar Pandit is a Python Django Developer from Ranchi building scalable admin dashboards, REST APIs, automation tools, CMS systems, and business web applications using Django, DRF and PostgreSQL."
+        content="Nishal Kumar Pandit is a Python Django Developer from Ranchi architecting scalable admin dashboards, REST APIs, AI automation tools (Flux AI), marketplaces, and enterprise web applications using Django, DRF, and PostgreSQL."
         property="og:description" />
     <meta content="website" property="og:type" />
     <meta content="https://nihalpandit000.github.io/" property="og:url" />
@@ -2476,25 +2566,63 @@
                     <div class="title">
                         <h2>Selected <span class="it">project work</span> —<br />dashboards, automation and backend
                             systems.</h2>
-                        <p class="deck">A focused set of projects that show how I approach Django apps, admin systems,
-                            client workflows and production-ready features.</p>
+                        <p class="deck">A comprehensive portfolio of 12+ production-grade Django systems, REST APIs, AI integrations, operational dashboards and business automation platforms.</p>
                     </div>
                 </header>
-                <!-- CASE 01 -->
-                <article class="case reveal">
+
+                <!-- Project Filter Bar -->
+                <div class="project-filters reveal" role="tablist" aria-label="Filter projects by category">
+                    <button type="button" class="filter-btn active" data-filter="all">All Projects (12)</button>
+                    <button type="button" class="filter-btn" data-filter="saas-ai">AI &amp; SaaS Platforms (3)</button>
+                    <button type="button" class="filter-btn" data-filter="marketplaces">Marketplaces &amp; APIs (4)</button>
+                    <button type="button" class="filter-btn" data-filter="operations">Enterprise &amp; Operations (5)</button>
+                </div>
+
+                <!-- Case 01: Bazaarpe -->
+                <article class="case reveal" data-category="marketplaces">
                     <div class="case-meta">
                         <div class="num">Case / 01</div>
-                        <div class="year">2026 — Kingjacq AI</div>
-                        <span class="role">Lead Backend</span>
-                        <h3>Kingjacq AI</h3>
+                        <div class="year">2026 &mdash; Bazaarpe</div>
+                        <span class="role">Lead Backend &amp; Architect</span>
+                        <h3>Bazaarpe</h3>
                         <div class="tags">
-                            <span>Python</span><span>Django</span><span>AI</span><span>Textiles</span><span>Payments</span>
+                            <span>Python</span><span>Django</span><span>DRF</span><span>Marketplace</span><span>PostgreSQL</span><span>OTP Security</span><span>Payments</span>
                         </div>
                     </div>
                     <div class="case-body">
-                        <p>Enterprise-grade Jacquard design software built in Django. Kingjacq AI converts rough textile sketches into polished, production-ready patterns while managing subscription plans, payment flows and export workflows.</p>
+                        <p>Full-scale scrap collection, doorstep pickup and recycling marketplace platform connecting households and commercial waste producers with certified scrap vendors across India.</p>
+                        <div class="pull">Engineered transparent dynamic pricing, OTP-verified door-to-door handovers, and instant bank/UPI payouts.</div>
+                        <p>Architected multi-role REST APIs for customer and vendor mobile apps, automated service zone matching, subcategory GST-inclusive pricing with automated admin commission deductions, and an interactive 7D/1M/6M/1Y operations analytics console. Implemented self-service account deletion and privacy portals compliant with India DPDP Act 2023.</p>
+                        <div class="metric-card">
+                            <div class="h">
+                                <span class="t">Implementation focus</span>
+                                <span class="l">module strength</span>
+                            </div>
+                            <div class="bar-chart" data-animate="">
+                                <div class="row"><span>Pricing &amp; Commission Engine</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>OTP Handover Verification</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>Time-Series Analytics (7D/1M/6M/1Y)</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                                <div class="row"><span>DPDP Compliance &amp; Deletion</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Case 02: Kingjacq AI -->
+                <article class="case reveal" data-category="saas-ai">
+                    <div class="case-meta">
+                        <div class="num">Case / 02</div>
+                        <div class="year">2026 &mdash; Kingjacq AI</div>
+                        <span class="role">Lead Backend Engineer</span>
+                        <h3>Kingjacq AI</h3>
+                        <div class="tags">
+                            <span>Python</span><span>Django</span><span>AI Image Processing</span><span>Textile SaaS</span><span>Razorpay</span><span>CAD</span>
+                        </div>
+                    </div>
+                    <div class="case-body">
+                        <p>Enterprise-grade Jacquard design software built in Django. Kingjacq AI converts rough textile sketches into polished, production-ready woven patterns while managing subscription plans, payment flows and export workflows.</p>
                         <div class="pull">Built for designers who need consistent, repeat-ready textile outputs with managed access controls.</div>
-                        <p>The platform combines AI-assisted sketch refinement, license management and export workflows into a single production pipeline.</p>
+                        <p>The platform combines AI-assisted sketch refinement, license management, automated weaving structure generation, and CAD export pipelines into a single high-performance production system.</p>
                         <div class="metric-card">
                             <div class="h">
                                 <span class="t">Implementation focus</span>
@@ -2509,62 +2637,307 @@
                         </div>
                     </div>
                 </article>
-                <!-- CASE 02 -->
-                <article class="case reveal">
-                    <div class="case-meta">
-                        <div class="num">Case / 02</div>
-                        <div class="year">2025 — 2026 · SPD Infragroup</div>
-                        <span class="role">Full-stack</span>
-                        <h3>SPD Infragroup</h3>
-                        <div class="tags">
-                            <span>Django</span><span>DRF</span><span>PostgreSQL</span><span>RBAC</span><span>Reports</span>
-                        </div>
-                    </div>
-                    <div class="case-body">
-                        <p>A construction operations platform that streamlines BOQ-driven procurement, inventory tracking and multi-role approvals across Admin, Store, Supervisor and Engineer teams.</p>
-                        <p>The system delivers clean project controls, purchase approvals and stock visibility for large field operations.</p>
-                        <div class="metric-card">
-                            <div class="h">
-                                <span class="t">Implementation focus</span>
-                                <span class="l">module strength</span>
-                            </div>
-                            <div class="bar-chart" data-animate="">
-                                <div class="row"><span>RBAC control</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
-                                <div class="row"><span>BOQ workflows</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
-                                <div class="row"><span>Stock tracking</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
-                                <div class="row"><span>Expense reports</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <!-- CASE 03 -->
-                <article class="case reveal">
+
+                <!-- Case 03: Vishwa Sports -->
+                <article class="case reveal" data-category="saas-ai">
                     <div class="case-meta">
                         <div class="num">Case / 03</div>
-                        <div class="year">2025 — Convenant Matrimonial</div>
-                        <span class="role">Contributor</span>
-                        <h3>Convenant Matrimonial</h3>
+                        <div class="year">2026 &mdash; Vishwa Sports</div>
+                        <span class="role">Backend &amp; AI Integration</span>
+                        <h3>Vishwa Sports</h3>
                         <div class="tags">
-                            <span>Django</span><span>RBAC</span><span>Matching</span><span>Verification</span><span>Community</span>
+                            <span>Django</span><span>Flux AI</span><span>Apparel Customization</span><span>HTML5 Canvas</span><span>Kanban</span><span>Production</span>
                         </div>
                     </div>
                     <div class="case-body">
-                        <p>A church-focused matrimonial platform with verified matching, branch-level approval, lead management, document verification and community engagement features.</p>
-                        <p>The system supports structured profiles, approval workflows and premium service layers for verified matches.</p>
+                        <p>Custom sports apparel customization, automated generative design, and manufacturing workflow management platform.</p>
+                        <div class="pull">Integrated Flux AI generative pipelines to automate jersey mockups and production-ready pattern cutouts directly from designer prompts.</div>
+                        <p>Engineered an interactive design canvas, automated prompt engineering for photorealistic athlete renders using Flux API (flux-kontext-pro), product catalog masters, order queues, print-ready asset extraction, and manufacturing tracking consoles.</p>
                         <div class="metric-card">
                             <div class="h">
                                 <span class="t">Implementation focus</span>
                                 <span class="l">module strength</span>
                             </div>
                             <div class="bar-chart" data-animate="">
-                                <div class="row"><span>Branch management</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
-                                <div class="row"><span>Profile verification</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
-                                <div class="row"><span>Matching workflows</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
-                                <div class="row"><span>Community tools</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>Flux AI Integration</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                                <div class="row"><span>Interactive Canvas Workflows</span><span class="bar"><span class="fill" data-w="90"></span></span><span class="v">90%</span></div>
+                                <div class="row"><span>Order Queue &amp; Production Kanban</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>Print-Ready Asset Export</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
                             </div>
                         </div>
                     </div>
                 </article>
+
+                <!-- Case 04: Covenant Matrimony -->
+                <article class="case reveal" data-category="marketplaces">
+                    <div class="case-meta">
+                        <div class="num">Case / 04</div>
+                        <div class="year">2025 &ndash; 2026 &mdash; Covenant Matrimony</div>
+                        <span class="role">Lead Developer</span>
+                        <h3>Covenant Matrimony</h3>
+                        <div class="tags">
+                            <span>Django</span><span>RBAC</span><span>Matching Algorithms</span><span>Privacy Control</span><span>Leads</span><span>Community</span>
+                        </div>
+                    </div>
+                    <div class="case-body">
+                        <p>Faith-centric matrimonial platform serving Christian communities with structured profile verification, branch-level pastoral approvals, and lead management.</p>
+                        <div class="pull">Engineered confidential profile validation, automated photo privacy protection, and faith-aligned matchmaking algorithms.</div>
+                        <p>Developed multi-tier role access for Super Admin, Branch Admin, and Church Pastors, confidential document verification, automated profile photo privacy blurring, matchmaking recommendation algorithms, meeting schedulers, and subscription plans.</p>
+                        <div class="metric-card">
+                            <div class="h">
+                                <span class="t">Implementation focus</span>
+                                <span class="l">module strength</span>
+                            </div>
+                            <div class="bar-chart" data-animate="">
+                                <div class="row"><span>Profile verification</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>Matchmaking Algorithm</span><span class="bar"><span class="fill" data-w="90"></span></span><span class="v">90%</span></div>
+                                <div class="row"><span>Photo Privacy &amp; Blurring</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>Pastoral Verification Workflows</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Case 05: SPD Infragroup -->
+                <article class="case reveal" data-category="operations">
+                    <div class="case-meta">
+                        <div class="num">Case / 05</div>
+                        <div class="year">2025 &ndash; 2026 &mdash; SPD Infragroup</div>
+                        <span class="role">Full-Stack Developer</span>
+                        <h3>SPD Infragroup</h3>
+                        <div class="tags">
+                            <span>Django</span><span>DRF</span><span>PostgreSQL</span><span>RBAC</span><span>Procurement</span><span>BOQ Tracking</span>
+                        </div>
+                    </div>
+                    <div class="case-body">
+                        <p>Operations platform for a civil infrastructure enterprise. SPD Infragroup manages Bill of Quantities (BOQ) procurement, multi-tier approvals and inventory tracking across active job sites.</p>
+                        <div class="pull">Digitized construction operations across Admin, Store, Supervisor, and Engineer teams with end-to-end stock visibility.</div>
+                        <p>Replaced manual paperwork with digital purchase requisitions, real-time material stock registers, machinery maintenance logs, vendor quotation comparisons, and expense audit reporting.</p>
+                        <div class="metric-card">
+                            <div class="h">
+                                <span class="t">Implementation focus</span>
+                                <span class="l">module strength</span>
+                            </div>
+                            <div class="bar-chart" data-animate="">
+                                <div class="row"><span>BOQ workflow</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                                <div class="row"><span>Stock tracking</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>RBAC &amp; Approvals</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>Reporting &amp; Audits</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Case 06: Sugu (Infinity Ventures) -->
+                <article class="case reveal" data-category="marketplaces">
+                    <div class="case-meta">
+                        <div class="num">Case / 06</div>
+                        <div class="year">2026 &mdash; Sugu (Infinity Ventures)</div>
+                        <span class="role">Backend &amp; Geolocation Architect</span>
+                        <h3>Sugu Services</h3>
+                        <div class="tags">
+                            <span>Django</span><span>DRF</span><span>Geolocation Engine</span><span>Bidding</span><span>Escrow</span><span>Multi-Vendor</span>
+                        </div>
+                    </div>
+                    <div class="case-body">
+                        <p>On-demand multi-vendor home and commercial services marketplace featuring live GPS tracking and dynamic radial technician matching.</p>
+                        <div class="pull">Engineered a 10km proximity matching engine connecting customers with verified nearby service technicians.</div>
+                        <p>Built dynamic service job bidding, automated escrow deposit holding, vendor KYC Aadhaar/PAN validation, real-time job state transitions, and responsive multi-tier dashboards for vendors and administrative dispatchers.</p>
+                        <div class="metric-card">
+                            <div class="h">
+                                <span class="t">Implementation focus</span>
+                                <span class="l">module strength</span>
+                            </div>
+                            <div class="bar-chart" data-animate="">
+                                <div class="row"><span>Proximity Matching Engine</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                                <div class="row"><span>Bidding &amp; Escrow Payments</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                                <div class="row"><span>Vendor KYC Verification</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>Multi-Role Dashboard</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Case 07: Nainjyoti -->
+                <article class="case reveal" data-category="marketplaces">
+                    <div class="case-meta">
+                        <div class="num">Case / 07</div>
+                        <div class="year">2026 &mdash; Nainjyoti</div>
+                        <span class="role">Backend API Developer</span>
+                        <h3>Nainjyoti</h3>
+                        <div class="tags">
+                            <span>Django</span><span>DRF</span><span>E-Commerce</span><span>Prescription Optics</span><span>Cart &amp; Checkout</span><span>APIs</span>
+                        </div>
+                    </div>
+                    <div class="case-body">
+                        <p>Healthcare and optical e-commerce platform specializing in custom prescription eyewear, lens configuration, and optical clinic order management.</p>
+                        <div class="pull">Delivered complex prescription configuration workflows, multi-step checkout, and seamless payment reconciliation.</div>
+                        <p>Designed the complete REST API architecture for frame catalogs, prescription lens power calculation, shopping cart state management, checkout payments, and post-purchase order tracking for clinics and patients.</p>
+                        <div class="metric-card">
+                            <div class="h">
+                                <span class="t">Implementation focus</span>
+                                <span class="l">module strength</span>
+                            </div>
+                            <div class="bar-chart" data-animate="">
+                                <div class="row"><span>Prescription Configuration API</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                                <div class="row"><span>Cart &amp; Multi-Step Checkout</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>Payment Webhooks &amp; Gateway</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>Post-Purchase Order Tracking</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Case 08: SmartFlex (Sanghi) -->
+                <article class="case reveal" data-category="saas-ai">
+                    <div class="case-meta">
+                        <div class="num">Case / 08</div>
+                        <div class="year">2026 &mdash; SmartFlex (Sanghi)</div>
+                        <span class="role">Backend &amp; Image Processing</span>
+                        <h3>SmartFlex</h3>
+                        <div class="tags">
+                            <span>Django</span><span>Pillow</span><span>Dynamic Typography</span><span>Marketing Automation</span><span>Image Rendering</span>
+                        </div>
+                    </div>
+                    <div class="case-body">
+                        <p>Automated business marketing and promotional poster generation system for retail dealers, industrial franchises, and commercial enterprises.</p>
+                        <div class="pull">Automated custom marketing poster creation using Pillow image processing with dynamic typography and brand overlays.</div>
+                        <p>Built a dynamic poster template engine that auto-injects dealer logos, contact details, customized festival greetings, and promotional graphics with instant high-resolution rendering and batch social-share exports.</p>
+                        <div class="metric-card">
+                            <div class="h">
+                                <span class="t">Implementation focus</span>
+                                <span class="l">module strength</span>
+                            </div>
+                            <div class="bar-chart" data-animate="">
+                                <div class="row"><span>Template Rendering Engine</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                                <div class="row"><span>Pillow Image Composite Processing</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>Dynamic Typography Stamping</span><span class="bar"><span class="fill" data-w="90"></span></span><span class="v">90%</span></div>
+                                <div class="row"><span>Batch Export &amp; Social Delivery</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Case 09: Power Solution -->
+                <article class="case reveal" data-category="operations">
+                    <div class="case-meta">
+                        <div class="num">Case / 09</div>
+                        <div class="year">2026 &mdash; Power Solution</div>
+                        <span class="role">API &amp; Service Management Developer</span>
+                        <h3>Power Solution</h3>
+                        <div class="tags">
+                            <span>FastAPI / Django</span><span>SQLite</span><span>Flutter APIs</span><span>AMC Management</span><span>Service Tickets</span>
+                        </div>
+                    </div>
+                    <div class="case-body">
+                        <p>Field service management and Annual Maintenance Contract (AMC) tracking platform for industrial power inverters, solar gear, and commercial battery installations.</p>
+                        <div class="pull">Structured lightweight API backend powering Flutter field technician app for doorstep equipment servicing.</div>
+                        <p>Engineered customer complaint ticket lifecycles, automated technician dispatching, warranty verification algorithms, AMC recurring maintenance schedules, and spare parts replacement tracking.</p>
+                        <div class="metric-card">
+                            <div class="h">
+                                <span class="t">Implementation focus</span>
+                                <span class="l">module strength</span>
+                            </div>
+                            <div class="bar-chart" data-animate="">
+                                <div class="row"><span>Service Ticketing Lifecycle</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>Technician Dispatch Engine</span><span class="bar"><span class="fill" data-w="90"></span></span><span class="v">90%</span></div>
+                                <div class="row"><span>AMC &amp; Warranty Tracking</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                                <div class="row"><span>API Response Performance</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Case 10: Sai Decore -->
+                <article class="case reveal" data-category="operations">
+                    <div class="case-meta">
+                        <div class="num">Case / 10</div>
+                        <div class="year">2026 &mdash; Sai Decore</div>
+                        <span class="role">Full-Stack Developer</span>
+                        <h3>Sai Decore</h3>
+                        <div class="tags">
+                            <span>Django</span><span>Interior Design</span><span>Inventory Control</span><span>Quotation Engine</span><span>Billing</span>
+                        </div>
+                    </div>
+                    <div class="case-body">
+                        <p>Interior decoration, furniture, and home furnishings management platform handling material catalogs, custom client quotations, and supplier purchase invoicing.</p>
+                        <div class="pull">Streamlined interior design estimation, material stock tracking, and client billing into a unified operational console.</div>
+                        <p>Implemented dynamic cost estimation logic for bespoke interior projects, warehouse raw material inventory registers, automated PDF quotation generation, supplier billing, and payment balance tracking.</p>
+                        <div class="metric-card">
+                            <div class="h">
+                                <span class="t">Implementation focus</span>
+                                <span class="l">module strength</span>
+                            </div>
+                            <div class="bar-chart" data-animate="">
+                                <div class="row"><span>Quotation &amp; Cost Estimation</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                                <div class="row"><span>Inventory &amp; Stock Registers</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                                <div class="row"><span>Invoicing &amp; Billing History</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>Supplier Purchase Order Control</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Case 11: Source-2-Destination -->
+                <article class="case reveal" data-category="operations">
+                    <div class="case-meta">
+                        <div class="num">Case / 11</div>
+                        <div class="year">2026 &mdash; Source-2-Destination</div>
+                        <span class="role">Backend &amp; Logistics Developer</span>
+                        <h3>Source-2-Destination</h3>
+                        <div class="tags">
+                            <span>Django</span><span>Fleet Logistics</span><span>Calling Duration Tracker</span><span>Bulk Upload</span><span>Reports</span>
+                        </div>
+                    </div>
+                    <div class="case-body">
+                        <p>Institutional transportation fleet and franchise communication tracking platform managing calling durations, calling schedules, and passenger transit logs.</p>
+                        <div class="pull">Engineered calling duration tracking, schedule dispatching, and bulk transit data processing for school networks.</div>
+                        <p>Developed franchise call logs, scheduled notification triggers, bulk student and parent roster ingestion, transit duration analytics, and administrative management reports.</p>
+                        <div class="metric-card">
+                            <div class="h">
+                                <span class="t">Implementation focus</span>
+                                <span class="l">module strength</span>
+                            </div>
+                            <div class="bar-chart" data-animate="">
+                                <div class="row"><span>Calling Duration Tracker</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                                <div class="row"><span>Bulk Roster Processing</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>Scheduling &amp; Dispatch Engine</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                                <div class="row"><span>Management Reporting</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Case 12: Lacisin -->
+                <article class="case reveal" data-category="operations">
+                    <div class="case-meta">
+                        <div class="num">Case / 12</div>
+                        <div class="year">2026 &mdash; Lacisin</div>
+                        <span class="role">Frontend &amp; Admin UI Architect</span>
+                        <h3>Lacisin Operations</h3>
+                        <div class="tags">
+                            <span>HTML5</span><span>CSS3</span><span>Bootstrap 5</span><span>Tailwind Utilities</span><span>JavaScript</span><span>Data Tables</span>
+                        </div>
+                    </div>
+                    <div class="case-body">
+                        <p>Modern enterprise administration and operations console prototype featuring modular data tables, metrics monitoring widgets, and responsive operational consoles.</p>
+                        <div class="pull">Crafted accessible, high-density enterprise dashboard interfaces with interactive metric widgets and modular tables.</div>
+                        <p>Engineered responsive KPI monitoring widgets, sortable and filterable data tables, modal drawers, form validation workflows, and accessible component architectures tailored for complex business operations.</p>
+                        <div class="metric-card">
+                            <div class="h">
+                                <span class="t">Implementation focus</span>
+                                <span class="l">module strength</span>
+                            </div>
+                            <div class="bar-chart" data-animate="">
+                                <div class="row"><span>UI Component Architecture</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                                <div class="row"><span>Responsive Design Systems</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                                <div class="row"><span>Data Table Interactivity</span><span class="bar"><span class="fill" data-w="95"></span></span><span class="v">95%</span></div>
+                                <div class="row"><span>Accessibility &amp; Modularity</span><span class="bar"><span class="fill" data-w="100"></span></span><span class="v">100%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
             </div>
         </section>
         <!-- ========== EXPERIENCE (gantt + detail) ========== -->
@@ -2782,13 +3155,13 @@
                         </div>
                         <div class="contact-cell">
                             <div class="l">GitHub</div>
-                            <div class="v"><a href="https://github.com/nihalpandit000" rel="noopener"
-                                    target="_blank">github.com/nihalpandit000</a></div>
+                            <div class="v"><a href="https://github.com/nishalpandit" rel="noopener"
+                                    target="_blank">Github</a></div>
                         </div>
                         <div class="contact-cell">
                             <div class="l">LinkedIn</div>
-                            <div class="v"><a href="https://www.linkedin.com/in/nihalpandit000/" rel="noopener"
-                                    target="_blank">linkedin.com/in/nihalpandit000</a></div>
+                            <div class="v"><a href="https://www.linkedin.com/in/nishal-kumar-pandit-09892a2a0/" rel="noopener"
+                                    target="_blank">Linkedin</a></div>
                         </div>
                         <div class="contact-cell">
                             <div class="l">Location</div>
@@ -2811,8 +3184,8 @@
             <div>
                 <a href="mailto:nihalpandit000@gmail.com">Email</a> ·
                 <a href="tel:+917631414263">Phone</a> ·
-                <a href="https://github.com/nihalpandit000" rel="noopener" target="_blank">GitHub</a> ·
-                <a href="https://www.linkedin.com/in/nihalpandit000/" rel="noopener" target="_blank">LinkedIn</a> ·
+                <a href="https://github.com/nishalpandit" rel="noopener" target="_blank">GitHub</a> ·
+                <a href="https://www.linkedin.com/in/nishal-kumar-pandit-09892a2a0/" rel="noopener" target="_blank">LinkedIn</a> ·
                 <a href="#top">↑ Top</a>
             </div>
         </div>
@@ -2927,6 +3300,35 @@
         })();
 
     </script>
+<script>
+
+        // Interactive Project Filter Tabs
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const caseArticles = document.querySelectorAll('.case[data-category]');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.getAttribute('data-filter');
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                caseArticles.forEach(art => {
+                    const cat = art.getAttribute('data-category');
+                    if (filter === 'all' || cat === filter) {
+                        art.classList.remove('is-hidden');
+                    } else {
+                        art.classList.add('is-hidden');
+                    }
+                });
+
+                // Trigger scroll animations for newly revealed items
+                if (typeof window.dispatchEvent === 'function') {
+                    window.dispatchEvent(new Event('scroll'));
+                }
+            });
+        });
+
+</script>
 </body>
 
 </html>
